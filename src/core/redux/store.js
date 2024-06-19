@@ -1,6 +1,6 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
-import employeeReducer from "./employee";
+import employeeReducer from "./employee.js";
 
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
@@ -32,4 +32,5 @@ export const store = configureStore({
 });
 
 // Creating a persistor object that is used to persist the store.
+export default store;
 export const persistor = persistStore(store);
