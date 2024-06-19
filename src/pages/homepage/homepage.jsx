@@ -4,6 +4,7 @@ import { useForm } from "../../hooks/useForm";
 import { useDispatch } from "react-redux";
 import { addEmployeeAction } from "../../core/redux/employee";
 import { states, departments } from "../../utils/statesAndDepartments";
+
 import "./styles.css";
 
 /**
@@ -14,6 +15,7 @@ import "./styles.css";
  * @returns { React.Component } A React component
  */
 function Home() {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -194,7 +196,7 @@ function Home() {
           <h1>HRnet</h1>
         </div>
         <button className="button" onClick={() => navigate("/employee-list")} aria-label="Navigate to employee list page">
-          Employee List
+          View Current Employees
         </button>
         <h2>Create Employee</h2>
 
