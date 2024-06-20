@@ -6,7 +6,8 @@ import { addEmployeeAction } from "../../core/redux/employee";
 import { states, departments } from "../../utils/statesAndDepartments";
 import Modal from "../../components/Modal/Modal"; // Assurez-vous que ce chemin est correct
 import Input from "../../components/Input/Input";
-import DatePicker from "../../components/DatePicker/DatePicker";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from "../../components/Dropdown/Dropdown";
 
 import "./styles.css";

@@ -226,17 +226,17 @@
 
 .prev {
     float: left;
-    background-image: url("../../assets/angle-left-solid.svg");
+    background-image: url("/assets/angle-left-solid.svg");
 }
 
 .next {
     float: right;
-    background-image: url("../../assets/angle-right-solid.svg");
+    background-image: url("/assets/angle-right-solid.svg");
 }
 
 .today {
     width: 1rem;
     height: 1rem;
     float: left;
-    background-image: url("../../assets/house-solid.svg");
+    background-image: url("/assets/house-solid.svg");
 }
