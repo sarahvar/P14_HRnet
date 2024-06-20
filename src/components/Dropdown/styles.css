@@ -1,0 +1,102 @@
+.dropdown-wrapper {
+    position: relative;
+    width: 100%;
+    border: 0.0625rem solid #c5c5c5;
+    border-top-right-radius: 0.1875rem;
+    border-top-left-radius: 0.1875rem;
+    background: #f6f6f6;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dropdown-button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5em 1em;
+    border: 0;
+    background: transparent;
+}
+
+.dropdown-icon {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    order: 2;
+    width: 0.5rem;
+    height: 1rem;
+    margin: 0 0.5rem;
+    transform: translateY(-50%);
+    background-image: url("/assets/caret-down-solid.svg");
+    background-repeat: no-repeat;
+}
+
+.dropdown-text {
+    overflow: hidden;
+    border: 0;
+    background: transparent;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dropdown-text:focus {
+    outline: none;
+}
+
+.dropdown-option {
+    padding: 0.2rem 0.4em;
+}
+
+.dropdown-option.current-selection {
+    background: #33aaff;
+    box-shadow: #178fe5 0 0.0625rem 0.1875rem 0 inset;
+    color: #fff;
+    font-weight: 700;
+}
+
+.dropdown-option:hover,
+.dropdown-option:focus {
+    background: #007fff;
+    color: #ffffff;
+}
+
+.dropdown-option.label {
+    border-bottom: 1px solid #ccc;
+    cursor: default;
+    user-select: none;
+}
+
+.dropdown-option.label:hover {
+    background: unset;
+    color: unset;
+}
+
+.dropdown-list {
+    max-height: 20vh;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    overflow-x: hidden;
+    list-style: none;
+}
+
+.dropdown-list-wrapper {
+    z-index: 100;
+    position: absolute;
+    width: 100%;
+    border: 0.0625rem solid #c5c5c5;
+    border-bottom-right-radius: 0.1875rem;
+    border-bottom-left-radius: 0.1875rem;
+    background: #ffffff;
+}
+
+.dropdown-background {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+}

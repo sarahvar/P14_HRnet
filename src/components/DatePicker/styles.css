@@ -1,0 +1,242 @@
+.date-picker {
+    width: 100%;
+    margin-left: 0.5rem;
+    float: left;
+    user-select: none;
+}
+
+.date-picker-input-wrapper {
+    position: relative;
+}
+
+.date-picker-input-wrapper .date-format {
+    position: absolute;
+    top: 0.8rem;
+    right: 0;
+    color: #757575;
+    font-size: 0.8rem;
+    transition: 0.2s ease-out;
+}
+
+.date-picker * {
+    padding: 0;
+}
+
+.date-picker-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 1.25rem;
+    overflow: auto;
+    background-color: transparent;
+    text-align: center;
+    z-index: 1;
+}
+
+.date-picker-background::before {
+    display: inline-block;
+    height: 100%;
+    margin-right: -0.05rem;
+    vertical-align: middle;
+    content: "";
+}
+
+.date-picker-wrapper {
+    z-index: 90;
+    position: absolute;
+    width: 100%;
+    padding: 0.5rem 0 0.125rem 0;
+    border: 1px solid #ccc;
+    background: #fff;
+    box-shadow: 0 0.3125rem 0.9375rem -0.3125rem rgba(0, 0, 0, 0.506);
+}
+
+.date-picker-nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.3rem 0;
+}
+
+.date-picker-nav-wrapper .dropdown-icon {
+    position: static;
+    transform: translateY(20%);
+}
+
+.calendar {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    td,
+    th {
+        display: inline-block;
+        width: 14.286%;
+        height: 0;
+        padding-bottom: 14.286%;
+        border: 1px solid #ddd;
+        background: #f5f5f5;
+        color: #666;
+        font-size: 0.75rem;
+        text-align: right;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+
+    th {
+        color: #999;
+        text-align: center;
+        cursor: default;
+    }
+
+    .header-day-wrapper {
+        position: relative;
+    }
+
+    .header-day {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .date {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        align-items: center;
+        justify-content: center;
+        width: 75%;
+        height: 75%;
+        padding-right: 0.3125rem;
+        transform: translate(-50%, -50%);
+        border: none;
+        border-radius: 50%;
+        background: transparent;
+    }
+
+    .date.calendar-today {
+        color: #33aaff;
+        font-weight: bold;
+    }
+
+    .date.current-selection {
+        background: #33aaff;
+        box-shadow: #178fe5 0 0.0625rem 0.1875rem 0 inset;
+        color: #fff;
+        font-weight: 700;
+    }
+
+    .date.other-month {
+        opacity: 0.5;
+    }
+
+    .date:hover,
+    .date:focus {
+        background: #ff8000;
+        color: #fff;
+    }
+}
+
+.dropdown-text {
+    font-size: 0.875rem;
+    font-weight: bold;
+    line-height: 1.25rem;
+    text-align: end;
+    cursor: pointer;
+}
+
+.dropdown-text:hover {
+    font-size: 0.875rem;
+    font-weight: bold;
+    line-height: 1.25rem;
+}
+
+.dropdown-wrapper {
+    border: 0;
+    background: transparent;
+}
+
+.dropdown-option {
+    padding: 0.125rem 0.625rem 0.125rem 0.3125rem;
+}
+
+.dropdown-option:hover {
+    background: #ff8000;
+    color: #fff;
+}
+
+.dropdown-list {
+    max-height: 10rem;
+}
+
+.dropdown-list-item {
+    border: 0;
+    font-weight: bold;
+}
+
+.forbidden-date:hover {
+    cursor: not-allowed;
+}
+
+.label {
+    margin-left: 0.3125rem;
+    padding: 0.3125rem 0.1875rem;
+    float: left;
+    font-size: 0.875rem;
+    font-weight: bold;
+    line-height: 1.25rem;
+    text-align: right;
+}
+
+.month-picker .dropdown-text {
+    width: 6em;
+}
+
+.year-picker .dropdown-text {
+    width: 2.5rem;
+}
+
+.next,
+.prev,
+.today {
+    width: 1.3rem;
+    height: 1.3rem;
+    overflow: hidden;
+    border: 0;
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-indent: 100%;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.next:hover,
+.prev:hover,
+.today:hover {
+    opacity: 1;
+}
+
+.prev {
+    float: left;
+    background-image: url("../../assets/angle-left-solid.svg");
+}
+
+.next {
+    float: right;
+    background-image: url("../../assets/angle-right-solid.svg");
+}
+
+.today {
+    width: 1rem;
+    height: 1rem;
+    float: left;
+    background-image: url("../../assets/house-solid.svg");
+}

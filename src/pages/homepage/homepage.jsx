@@ -5,6 +5,9 @@ import { useDispatch } from "react-redux";
 import { addEmployeeAction } from "../../core/redux/employee";
 import { states, departments } from "../../utils/statesAndDepartments";
 import Modal from "../../components/Modal/Modal"; // Assurez-vous que ce chemin est correct
+import Input from "../../components/Input/Input";
+import DatePicker from "../../components/DatePicker/DatePicker";
+import Dropdown from "../../components/Dropdown/Dropdown";
 
 import "./styles.css";
 
