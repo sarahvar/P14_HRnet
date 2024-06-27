@@ -173,7 +173,7 @@ const Form = () => {
           type="submit"
           name="submit"
           className="submit"
-          value="Save  &#x00AE;"
+          value="Save"
         />
       </form>
      
