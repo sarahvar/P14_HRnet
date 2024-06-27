@@ -130,8 +130,8 @@ const Form = () => {
           placeholder="Select a start date"
         />
 
-<div className="adress">
-  <label>Adresse:</label>
+<div className="address">
+  <label className="address-label">Address</label>
   <Input
     type="text"
     name="street"

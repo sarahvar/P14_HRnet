@@ -35,20 +35,30 @@ Form {
 }
 
 .label p {
-  margin: 0.5rem 0 0.2rem 0;
+  margin: 1rem 0 0.2rem 0;
   text-align: left;
   color: black;
 }
 
-.adress {
+.address {
   width: 85%;
   border: solid 2px #6c8312;
-  border-radius: 0.4rem;
+  border-radius: 0rem;
   padding: 0.2rem 0.2rem 4rem 0.2rem;
   margin: 1.5rem auto;
-  height: 15rem;
+  height: 16rem;
   position: relative;
 }
+
+.address-label {
+  position: absolute;
+  top: -1rem; /* Adjust as needed to position the label correctly */
+  left: 1rem; /* Adjust as needed to position the label correctly */
+  background: #c2c27da9; /* Ensures the label background is white */
+  padding: 0 0.5rem; /* Adds padding to the label text */
+  font-size: 1rem; /* Adjust font size as needed */
+}
+
 
 .label-zipcode {
   position: absolute;
