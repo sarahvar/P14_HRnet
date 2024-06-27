@@ -39,13 +39,14 @@ Form {
   text-align: left;
   color: black;
 }
+
 .adress {
   width: 85%;
   border: solid 2px #6c8312;
   border-radius: 0.4rem;
   padding: 0.2rem 0.2rem 4rem 0.2rem;
   margin: 1.5rem auto;
-  height: 14rem;
+  height: 15rem;
   position: relative;
 }
 

@@ -130,37 +130,38 @@ const Form = () => {
           placeholder="Select a start date"
         />
 
-        <div className="adress">
-          <Input
-            type="text"
-            name="street"
-            labelTitle="Street:"
-            value={streetToAdd}
-            setInput={setStreet}
-          />
-          <Input
-            type="text"
-            name="city"
-            labelTitle="City:"
-            value={cityToAdd}
-            setInput={setCity}
-          />
-          <Dropdown
-            name="state"
-            labelTitle="State:"
-            value={State}
-            setDrop={setState}
-            datas={dataStates}
-          />
+<div className="adress">
+  <label>Adresse:</label>
+  <Input
+    type="text"
+    name="street"
+    labelTitle="Street:"
+    value={streetToAdd}
+    setInput={setStreet}
+  />
+  <Input
+    type="text"
+    name="city"
+    labelTitle="City:"
+    value={cityToAdd}
+    setInput={setCity}
+  />
+  <Dropdown
+    name="state"
+    labelTitle="State:"
+    value={State}
+    setDrop={setState}
+    datas={dataStates}
+  />
+  <Input
+    type="number"
+    name="zipcode"
+    labelTitle="Zipcode:"
+    value={zipCodeToAdd}
+    setInput={setZipCode}
+  />
+</div>
 
-          <Input
-            type="number"
-            name="zipcode"
-            labelTitle="Zipcode:"
-            value={zipCodeToAdd}
-            setInput={setZipCode}
-          />
-        </div>
         <Dropdown
           name="department"
           labelTitle="Department"
