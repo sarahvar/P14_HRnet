@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+}
+.header h1 {
+  margin: 5rem 20% 0 0;
+}
+.name {
+  color: #444444;
+}
+
+@media (max-width: 575px) {
+  .header {
+    width: 98%;
+    display: block;
+    margin: auto;
+    padding: auto;
+  }
+  .header-img {
+    width: 70%;
+    margin: auto;
+  }
+  .header h1 {
+    width: 100%;
+    margin: auto;
+  }
+}
