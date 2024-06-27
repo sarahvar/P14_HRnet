@@ -104,26 +104,26 @@ const Form = () => {
         <Input
           type="text"
           name="firstname"
-          labelTitle="First Name:"
+          labelTitle="First Name"
           value={firstNameToAdd}
           setInput={setFirstName}
         />
         <Input
           type="text"
           name="lastname"
-          labelTitle="Last Name:"
+          labelTitle="Last Name"
           value={lastNameToAdd}
           setInput={setLastName}
         />
         <DatePicker
-          labelTitle="Birth Date:"
+          labelTitle="Date of Birth"
           selected={valueBirthDate}
           setValueDate={setValueBirthDate}
           setDate={setBirthDate}
           placeholder="Select a birth date"
         />
         <DatePicker
-          labelTitle="Start Date:"
+          labelTitle="Start Date"
           selected={valueStartDate}
           setValueDate={setValueStartDate}
           setDate={setStartDate}
