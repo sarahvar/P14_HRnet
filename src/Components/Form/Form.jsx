@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { add } from "../../../Redux/Slice/employeeSlice";
+import { add } from "../../Redux/Slice/employeeSlice";
 import DatePicker from "./DatePicker/MyDatePicker";
 
-import dataStates from "../../../data/dataStates";
-import dataDepartments from "../../../data/dataDepartments";
+import dataStates from "../../data/dataStates";
+import dataDepartments from "../../data/dataDepartments";
 
 import "./Form.css";
 
