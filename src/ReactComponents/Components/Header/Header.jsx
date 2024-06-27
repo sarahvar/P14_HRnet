@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import "./Header.css";
-import logo from "../../../assets/WealthHealth.png";
+import logo from "../../../assets/WealthHealth.jpg";
 
 export default function Header() {
   return (
