@@ -52,11 +52,11 @@ Form {
 
 .address-label {
   position: absolute;
-  top: -1rem; /* Adjust as needed to position the label correctly */
-  left: 1rem; /* Adjust as needed to position the label correctly */
-  background: #c2c27da9; /* Ensures the label background is white */
-  padding: 0 0.5rem; /* Adds padding to the label text */
-  font-size: 1rem; /* Adjust font size as needed */
+  top: -1rem; 
+  left: 6.1rem; 
+  background: #c2c27da9; 
+  padding: 0 0.5rem; 
+  font-size: 1rem; 
 }
 
 

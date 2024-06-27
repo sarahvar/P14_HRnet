@@ -11,9 +11,6 @@ export default function Header() {
           <img className="logo" src={logo} alt="logo de WealthHealth" />
         </Link>
       </div>
-      <h1>
-        <span className="name">WealthHealth </span>IntraNetwork
-      </h1>
     </div>
   );
 }
