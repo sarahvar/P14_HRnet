@@ -708,6 +708,11 @@ csstype@^3.0.2:
   resolved "https://registry.npmjs.org/csstype/-/csstype-3.1.3.tgz"
   integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
 
+customizable-react-modal-by-lazez@^0.3.6:
+  version "0.3.6"
+  resolved "https://registry.npmjs.org/customizable-react-modal-by-lazez/-/customizable-react-modal-by-lazez-0.3.6.tgz"
+  integrity sha512-ZaVMoYWvDnFwXZBDrR2y1MmJl2QhEvrrN2aEAZWTW8dCTkLYv9oJRCxXbT5nigZtzS4iuhXb2I2NFaYXlNwfEg==
+
 data-view-buffer@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/data-view-buffer/-/data-view-buffer-1.0.1.tgz"

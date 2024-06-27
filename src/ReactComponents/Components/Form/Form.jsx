@@ -10,7 +10,7 @@ import "./Form.css";
 
 import Dropdown from "./Dropdown/Dropdowns";
 import Input from "./Input/Input";
-import { Modal } from "customizable-react-modal-by-lazez";
+
 
 const Form = () => {
   const myTheme = {
@@ -61,9 +61,8 @@ const Form = () => {
 
   const dispatch = useDispatch();
 
-  const [openModal, setOpenModal] = useState(false);
   const onOpenModal = () => setOpenModal(true);
-  const onCloseModal = () => setOpenModal(false);
+
 
   const dateForTable = (date) => {
     const month = date.getMonth() + 1;
@@ -176,9 +175,7 @@ const Form = () => {
           value="Save  &#x00AE;"
         />
       </form>
-      {openModal && (
-        <Modal theme={myTheme} close={onCloseModal} text="Employee Created!" />
-      )}
+     
     </>
   );
 };
