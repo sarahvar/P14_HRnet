@@ -31,9 +31,6 @@ export default function MyDatePicker({
         placeholderText={placeholder}
         fixedHeight
         peekNextMonth
-        showMonthDropdown
-        useShortMonthInDropdown
-        showYearDropdown
         dropdownMode="select"
         todayButton="Today"
       />

@@ -13,7 +13,7 @@ export default function Home() {
         <div className="form-header">
           <div className="form-name">HRnet</div>
           <div className="form-link">
-            <Link to="/employees">View Current Employees &#x21AA;</Link>
+            <Link to="/employees">View Current Employees</Link>
           </div>
         </div>
         <Form />
