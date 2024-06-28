@@ -29,7 +29,6 @@ Form {
 }
 .label select {
   height: 2.4rem;
-  background-color: #d1d8b1;
   font-weight: bold;
   border-radius: 0.2rem;
 }
@@ -90,7 +89,7 @@ Form {
   color: #444444;
 }
 .react-datepicker {
-  background-color: #99aa55;
+  background-color: white;
 }
 .react-datepicker__day--keyboard-selected,
 .react-datepicker__month-text--keyboard-selected,
