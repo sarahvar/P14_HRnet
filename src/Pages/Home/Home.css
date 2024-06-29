@@ -21,6 +21,7 @@
   width: 13rem;
   padding: 0.5rem;
   background-color: green;
+  border: 2px solid #c2c27da9; 
   border-radius: 0.5rem;
   transition: transform 0.3s ease;
 }
