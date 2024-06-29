@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "../../Redux/Slice/employeeSlice";
 import DatePicker from "./DatePicker/MyDatePicker";
@@ -6,24 +6,13 @@ import DatePicker from "./DatePicker/MyDatePicker";
 import dataStates from "../../data/dataStates";
 import dataDepartments from "../../data/dataDepartments";
 
-import "./Form.css";
-
 import Dropdown from "./Dropdown/Dropdowns";
 import Input from "./Input/Input";
+import Modal from "../../Components/Modal/Modal";
 
+import "./Form.css";
 
 const Form = () => {
-  const myTheme = {
-    containerBg: "rgba(146, 146, 96, .9)",
-    messageBg: "#444444",
-    messageHoverBg: "#aebf8e",
-    messageHoverTxt: "black",
-    borderColor: "#d5db99",
-    buttonBg: "#d5db99",
-    buttonHoverBg: "#444444",
-    buttonHoverTxt: "white",
-  };
-
   const [
     firstNameToAdd,
     lastNameToAdd,
@@ -61,8 +50,9 @@ const Form = () => {
 
   const dispatch = useDispatch();
 
+  const [openModal, setOpenModal] = useState(false);
   const onOpenModal = () => setOpenModal(true);
-
+  const onCloseModal = () => setOpenModal(false);
 
   const dateForTable = (date) => {
     const month = date.getMonth() + 1;
@@ -92,11 +82,6 @@ const Form = () => {
     onOpenModal();
   };
 
-  console.log(employee);
-  console.log("BIRTH", birthDate);
-  console.log("START", startDate);
-  console.log("STATE", State);
-
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -105,14 +90,14 @@ const Form = () => {
           type="text"
           name="firstname"
           labelTitle="First Name"
-          value={firstNameToAdd}
+          value={firstName}
           setInput={setFirstName}
         />
         <Input
           type="text"
           name="lastname"
           labelTitle="Last Name"
-          value={lastNameToAdd}
+          value={lastName}
           setInput={setLastName}
         />
         <DatePicker
@@ -130,42 +115,42 @@ const Form = () => {
           placeholder="Select a start date"
         />
 
-<div className="address">
-  <label className="address-label">Address</label>
-  <Input
-    type="text"
-    name="street"
-    labelTitle="Street:"
-    value={streetToAdd}
-    setInput={setStreet}
-  />
-  <Input
-    type="text"
-    name="city"
-    labelTitle="City:"
-    value={cityToAdd}
-    setInput={setCity}
-  />
-  <Dropdown
-    name="state"
-    labelTitle="State:"
-    value={State}
-    setDrop={setState}
-    datas={dataStates}
-  />
-  <Input
-    type="number"
-    name="zipcode"
-    labelTitle="Zipcode:"
-    value={zipCodeToAdd}
-    setInput={setZipCode}
-  />
-</div>
+        <div className="address">
+          <label className="address-label">Address</label>
+          <Input
+            type="text"
+            name="street"
+            labelTitle="Street:"
+            value={street}
+            setInput={setStreet}
+          />
+          <Input
+            type="text"
+            name="city"
+            labelTitle="City:"
+            value={city}
+            setInput={setCity}
+          />
+          <Dropdown
+            name="state"
+            labelTitle="State:"
+            value={State}
+            setDrop={setState}
+            datas={dataStates}
+          />
+          <Input
+            type="number"
+            name="zipcode"
+            labelTitle="Zipcode:"
+            value={zipCode}
+            setInput={setZipCode}
+          />
+        </div>
 
         <Dropdown
           name="department"
           labelTitle="Department"
-          value={departmentToAdd}
+          value={department}
           setDrop={setDepartment}
           datas={dataDepartments}
         />
@@ -176,7 +161,9 @@ const Form = () => {
           value="Save"
         />
       </form>
-     
+      <Modal isOpen={openModal} onClose={onCloseModal}>
+        Employee Created!
+      </Modal>
     </>
   );
 };
