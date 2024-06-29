@@ -44,17 +44,14 @@
     justify-content: flex-end;
     padding-top: 0.5rem;
   }
-  
   .close-button {
     outline: none;
     padding: 0.75rem 1rem;
     background: var(--darker);
     border: none;
     border-radius: 0.5rem;
-    color: var(--light);
     font-size: 1.2rem;
     cursor: pointer;
-    transition: background 0.2s ease-in-out;
   }
   
   .close-button:hover {
@@ -62,6 +59,10 @@
     box-shadow: rgba(126, 146, 47, 0.9) 0 0 22px 6px;
   }
   
+  .close-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
   .background.blur {
     filter: blur(2px);
   }
