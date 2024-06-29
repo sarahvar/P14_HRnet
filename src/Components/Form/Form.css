@@ -123,6 +123,10 @@ Form {
   background-color: #44444456;
 }
 
+.react-datepicker__today-button .fa-house {
+  margin-right: 0.5rem;
+}
+
 @media (max-width: 1025px) {
   Form {
     width: 40%;

@@ -2,6 +2,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useRef, useCallback, useEffect } from "react";
 
+
 export default function MyDatePicker({
   selected,
   setDate,
@@ -17,14 +18,20 @@ export default function MyDatePicker({
   }, []);
 
   useEffect(() => {
-    const todayButton = document.querySelector(".react-datepicker__today-button");
-    if (todayButton) {
-      todayButton.innerHTML = '<i class="fa fa-house"></i> Today';
-    }
+    const interval = setInterval(() => {
+      const todayButton = document.querySelector(".react-datepicker__today-button");
+      if (todayButton && !todayButton.querySelector(".fa-house")) {
+        const icon = document.createElement("i");
+        icon.className = "fa fa-house";
+        todayButton.prepend(icon);
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <label className="label" onClick={onClickLabel} style={{ display: "block", marginBottom: "1rem" }}>
+    <label className="label" onClick={onClickLabel}>
       <p ref={labelContentRef}>{labelTitle}</p>
       <DatePicker
         required
@@ -41,7 +48,6 @@ export default function MyDatePicker({
         showYearDropdown
         dropdownMode="select"
         todayButton="Today"
-        className="custom-datepicker"
       />
     </label>
   );
