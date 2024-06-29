@@ -5,7 +5,7 @@ import Home from '../src/Pages/Home/Home';
 import './App.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import '@fortawesome/fontawesome-free/css/all.css'; // Import des styles CSS de Font Awesome
+import '@fortawesome/fontawesome-free/css/all.css'; 
 
 library.add(fas);
 

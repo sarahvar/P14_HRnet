@@ -1,8 +1,6 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useRef, useCallback, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 export default function MyDatePicker({
   selected,
@@ -19,20 +17,14 @@ export default function MyDatePicker({
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const todayButton = document.querySelector(".react-datepicker__today-button");
-      if (todayButton && !todayButton.querySelector(".fa-house")) {
-        const icon = document.createElement("i");
-        icon.className = "fa fa-house";
-        todayButton.prepend(icon);
-      }
-    }, 100);
-
-    return () => clearInterval(interval);
+    const todayButton = document.querySelector(".react-datepicker__today-button");
+    if (todayButton) {
+      todayButton.innerHTML = '<i class="fa fa-house"></i> Today';
+    }
   }, []);
 
   return (
-    <label className="label" onClick={onClickLabel}>
+    <label className="label" onClick={onClickLabel} style={{ display: "block", marginBottom: "1rem" }}>
       <p ref={labelContentRef}>{labelTitle}</p>
       <DatePicker
         required
@@ -49,7 +41,7 @@ export default function MyDatePicker({
         showYearDropdown
         dropdownMode="select"
         todayButton="Today"
-        className="custom-datepicker" // Ajoutez une classe personnalisée
+        className="custom-datepicker"
       />
     </label>
   );
