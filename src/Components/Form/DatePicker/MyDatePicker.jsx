@@ -40,7 +40,7 @@ export default function MyDatePicker({
           setValueDate(date);
           setDate(date);
         }}
-        dateFormat="dd/MM/yyyy"
+        dateFormat="MM/dd/yyyy"
         isClearable
         placeholderText={placeholder}
         fixedHeight

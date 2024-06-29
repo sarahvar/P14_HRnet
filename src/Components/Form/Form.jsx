@@ -105,14 +105,14 @@ const Form = () => {
           selected={valueBirthDate}
           setValueDate={setValueBirthDate}
           setDate={setBirthDate}
-          placeholder="Select a birth date"
+          placeholder="MM/DD/YYYY"
         />
         <DatePicker
           labelTitle="Start Date"
           selected={valueStartDate}
           setValueDate={setValueStartDate}
           setDate={setStartDate}
-          placeholder="Select a start date"
+          placeholder="MM/DD/YYYY"
         />
 
         <div className="address">
