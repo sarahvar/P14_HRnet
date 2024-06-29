@@ -22,6 +22,10 @@
   padding: 0.5rem;
   background-color: green;
   border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+}
+.form-link:hover {
+  transform: scale(1.1);
 }
 
 @media (max-width: 760px) {

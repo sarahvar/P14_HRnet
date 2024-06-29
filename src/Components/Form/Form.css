@@ -75,6 +75,12 @@ Form {
   border-radius: 0.5rem;
   padding-bottom: 1.6rem;
   padding-top: 0.6rem;
+  transition: transform 0.3s ease;
+  cursor: pointer; 
+}
+
+.submit:hover {
+  transform: scale(1.1);
 }
 .react-datepicker-wrapper input {
   width: 100%;
