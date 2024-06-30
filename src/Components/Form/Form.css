@@ -120,7 +120,7 @@ Form {
 .react-datepicker__year-text--today {
   font-weight: bolder;
   color: #b8c976;
-  background-color: #44444456;
+  background-color: #708090;
 }
 
 .react-datepicker__today-button .fa-house {

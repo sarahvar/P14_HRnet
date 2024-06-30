@@ -15,9 +15,8 @@ const Modal = ({ isOpen, onClose, children }) => {
           </button>
         </div>
         <div className="modal-content">
-          {/* Content */}
           <div className="modal-message">
-            {children} {/* Children will render "Employee Created!" */}
+            {children} 
           </div>
         </div>
       </div>
