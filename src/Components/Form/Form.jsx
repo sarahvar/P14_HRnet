@@ -8,7 +8,7 @@ import dataDepartments from "../../data/dataDepartments";
 
 import Dropdown from "./Dropdown/Dropdowns";
 import Input from "./Input/Input";
-import Modal from "../../Components/Modal/Modal";
+import { Modal } from 'modal-react-sarahvarin';
 
 import "./Form.css";
 
