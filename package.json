@@ -14,7 +14,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@reduxjs/toolkit": "^2.2.5",
-    "modal-react-sarahvarin": "^1.0.0",
+    "modal-react-sarahvarin": "^2.0.0",
     "react": "^18.2.0",
     "react-datepicker": "^7.2.0",
     "react-dom": "^18.2.0",
