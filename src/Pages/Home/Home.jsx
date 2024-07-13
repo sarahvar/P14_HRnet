@@ -4,6 +4,11 @@ import Form from "../../Components/Form/Form";
 
 import { Link } from "react-router-dom";
 import "./Home.css";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import '@fortawesome/fontawesome-free/css/all.css';
+
+library.add(fas);
 
 export default function Home() {
   return (

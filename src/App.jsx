@@ -1,21 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Header from '../src/Components/Header/Header';
-import Home from '../src/Pages/Home/Home';
-import './App.css';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import '@fortawesome/fontawesome-free/css/all.css'; 
+import './App.css'; 
 
-library.add(fas);
 
+
+const Home = lazy(() => import("../src/Pages/Home/Home"));
 
 const App = () => (
   <>
+   <Suspense fallback={<div>Loading...</div>}>
     <Header />
     <Routes>
       <Route index element={<Home />} />
     </Routes>
+    </Suspense>
   </>
 );
 
