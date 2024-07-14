@@ -2,8 +2,8 @@ import React from "react";
 
 
 import { Link } from "react-router-dom";
-import MyTable from "../../components/Table/MyTable";
-import labels from "../../../data/labels";
+import MyTable from "../../Components/Table/MyTable";
+import labels from "../../data/labels";
 import "./Employees.css";
 
 export default function Employees() {
