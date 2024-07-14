@@ -53,6 +53,9 @@ table td:nth-child(4) {
   border-radius: 0.2rem;
   padding: 0.5rem;
 }
+.table-header-cell:hover {
+  cursor: pointer; 
+}
 .icon-down-active:after {
   content: " \2B07";
   display: inline-block;

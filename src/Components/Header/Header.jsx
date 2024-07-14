@@ -1,6 +1,6 @@
 
 import "./Header.css";
-import logo from "../../assets/WealthHealth.jpg";
+import logo from "../../assets/WealthHealth.webp";
 
 export default function Header() {
   return (
@@ -11,7 +11,7 @@ export default function Header() {
             src={logo}
             alt="logo de WealthHealth"
             width="136" 
-            height="146" 
+            height="146"
           />
       </div>
     </div>
