@@ -4,10 +4,14 @@ const generateID = () => {
 };
 
 // Normalize a string
-const normalizeText = text => text
-  .toLowerCase()
-  .normalize("NFD")
-  .replace(/[\u0300-\u036f]/g, "")
-  .trim();
-
+const normalizeText = (text) => {
+  if (text) {
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+  }
+  return ""; // Retourner une chaîne vide si text est undefined ou null
+};
 export { generateID, normalizeText };
