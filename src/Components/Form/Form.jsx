@@ -76,7 +76,6 @@ const Form = () => {
     e.preventDefault();
     dispatch(add(employee));
     e.target.reset();
-    setValueBirthDate(null);
     setValueStartDate(null);
     onOpenModal();
   };
