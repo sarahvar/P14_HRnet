@@ -17,7 +17,7 @@ const labels = [
   },
   {
     text: "Date of birth",
-    value: "dateOfBirth",
+    value: "birthDate",
   },
   {
     text: "Street",
