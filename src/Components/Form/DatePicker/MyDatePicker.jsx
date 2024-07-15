@@ -1,7 +1,11 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useRef, useCallback, useEffect } from "react";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import '@fortawesome/fontawesome-free/css/all.css';
 
+library.add(fas);
 
 export default function MyDatePicker({
   selected,
