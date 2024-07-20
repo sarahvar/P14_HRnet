@@ -26,15 +26,6 @@ const store = configureStore({
     }),
 });
 
-// Créez une fonction pour arrêter la persistance après un délai spécifié
-const stopPersistAfterDelay = (delay) => {
-  setTimeout(() => {
-    persistStore(store).purge(); // Arrêtez la persistance des données
-  }, delay);
-};
-
-// Appelez la fonction pour arrêter la persistance après 24 heures en millisecondes
-stopPersistAfterDelay(86400000);
-
 export default store;
 export const persistor = persistStore(store);
+
