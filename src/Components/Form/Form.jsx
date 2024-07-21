@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "../../Redux/Slice/employeeSlice";
 import DatePicker from "./DatePicker/MyDatePicker";
-
 import dataStates from "../../data/dataStates";
 import dataDepartments from "../../data/dataDepartments";
-
 import Dropdown from "./Dropdown/Dropdowns";
 import Input from "./Input/Input";
 import Modal from "../Modal/Modal";
@@ -13,15 +11,15 @@ import "./Form.css";
 
 const Form = () => {
   const [
-    firstNameToAdd,
-    lastNameToAdd,
-    startDateToAdd,
-    departmentToAdd,
-    birthDateToAdd,
-    streetToAdd,
-    cityToAdd,
-    stateToAdd,
-    zipCodeToAdd,
+    firstNameToAdd = "",
+    lastNameToAdd = "",
+    startDateToAdd = "",
+    departmentToAdd = "",
+    birthDateToAdd = "",
+    streetToAdd = "",
+    cityToAdd = "",
+    stateToAdd = "",
+    zipCodeToAdd = "",
   ] = useSelector((state) => [
     state.firstName,
     state.lastName,
@@ -40,7 +38,7 @@ const Form = () => {
   const [startDate, setStartDate] = useState(startDateToAdd);
   const [street, setStreet] = useState(streetToAdd);
   const [city, setCity] = useState(cityToAdd);
-  const [State, setState] = useState(stateToAdd);
+  const [state, setState] = useState(stateToAdd);
   const [zipCode, setZipCode] = useState(zipCodeToAdd);
   const [department, setDepartment] = useState(departmentToAdd);
 
@@ -54,29 +52,46 @@ const Form = () => {
   const onCloseModal = () => setOpenModal(false);
 
   const dateForTable = (date) => {
+    if (!date) return ""; // Gestion des cas où `date` pourrait être null
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const year = date.getUTCFullYear();
-    return `${month}/${day}/${year}`.toString();
-  };
-
-  const employee = {
-    firstName,
-    lastName,
-    startDate: dateForTable(new Date(startDate)),
-    department,
-    birthDate: dateForTable(new Date(birthDate)),
-    street,
-    city,
-    State,
-    zipCode,
+    return `${month}/${day}/${year}`;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Créez l'objet employee
+    const employee = {
+      firstName,
+      lastName,
+      startDate: dateForTable(new Date(startDate)),
+      department,
+      birthDate: dateForTable(new Date(birthDate)),
+      street,
+      city,
+      state,
+      zipCode,
+    };
+
+    // Dispatch l'action pour ajouter l'employé
     dispatch(add(employee));
-    e.target.reset();
+
+    // Réinitialisez les champs du formulaire
+    setFirstName("");
+    setLastName("");
+    setBirthDate(null);
+    setStartDate(null);
+    setStreet("");
+    setCity("");
+    setState("");
+    setZipCode("");
+    setDepartment("");
+    setValueBirthDate(null);
     setValueStartDate(null);
+
+    // Fermez la modal
     onOpenModal();
   };
 
@@ -132,7 +147,7 @@ const Form = () => {
           <Dropdown
             name="state"
             labelTitle="State:"
-            value={State}
+            value={state}
             setDrop={setState}
             datas={dataStates}
           />
