@@ -17,7 +17,6 @@ export default function Table({
   return (
     <table className="table-main">
       <caption className="table-title">Current Employees</caption>
-
       <thead>
         <tr className="table-header-row">
           {/* labels*/}

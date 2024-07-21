@@ -2,12 +2,10 @@
 import Form from "../../Components/Form/Form";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import Header from "../../Components/Header/Header";
 
 export default function Home() {
   return (
     <div className="home">
-    <Header />
       <div className="all-form">
         <div className="form-header">
           <div className="form-name">HRnet</div>
