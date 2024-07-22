@@ -1,47 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-
 import { normalizeText } from "../../utils/utils";
 
-// Search in every entries
+const TableSearch = ({ data, handleDisplayedData, handleIsSearching }) => {
+  const [query, setQuery] = useState("");
 
-export default function Search({
-  data,
-  handleDisplayedData,
-  handleIsSearching,
-}) {
-  const handleSearch = (evt) => {
-    const value = normalizeText(evt.target.value);
-    if (value.length > 0) {
-      const dataToDisplay = data.filter((elt) => {
-        const values = Object.values(elt)
-          .map((val) => normalizeText(val))
-          .join(" ");
-        return values.includes(value);
-      });
-      handleDisplayedData(dataToDisplay);
+  const handleSearch = (event) => {
+    const searchQuery = event.target.value;
+    setQuery(searchQuery);
+
+    if (searchQuery.length > 0) {
       handleIsSearching(true);
+      const filteredData = data.filter((item) =>
+        Object.values(item).some((value) =>
+          normalizeText(value).includes(normalizeText(searchQuery))
+        )
+      );
+      handleDisplayedData(filteredData);
     } else {
-      handleDisplayedData(data);
       handleIsSearching(false);
+      handleDisplayedData(data);
     }
   };
 
   return (
-    <div className="table-utils-2">
-      <label htmlFor="dtb-search">{`Search: `}</label>
+    <div className="table-search">
       <input
-        type="search"
-        id="dtb-search"
-        name="dtb-search"
-        onChange={(evt) => handleSearch(evt)}
+        type="text"
+        value={query}
+        onChange={handleSearch}
+        placeholder="Search..."
       />
     </div>
   );
-}
+};
 
-Search.propTypes = {
+TableSearch.propTypes = {
   data: PropTypes.array.isRequired,
   handleDisplayedData: PropTypes.func.isRequired,
   handleIsSearching: PropTypes.func.isRequired,
 };
+
+export default TableSearch;

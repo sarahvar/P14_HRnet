@@ -52,7 +52,6 @@ const Form = () => {
   const onCloseModal = () => setOpenModal(false);
 
   const dateForTable = (date) => {
-    if (!date) return ""; // Gestion des cas où `date` pourrait être null
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const year = date.getUTCFullYear();

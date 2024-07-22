@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-
 import "./Table.css";
 import { normalizeText } from "../../utils/utils";
-
 import Entries from "./Entries";
 import Search from "./TableSearch";
 import Table from "./Table";
@@ -11,17 +9,20 @@ import TableFooter from "./TableFooter";
 import Pagination from "./Pagination";
 
 export default function MyTable({ labels, data }) {
-  const initialState = data;
-  //pagination
+  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(10);
-  //sort and search
-  const [sortedData, setSortedData] = useState(initialState);
+  
+  // Sort and Search
+  const [sortedData, setSortedData] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
-  const [sort, setSort] = useState({
-    column: "",
-    isDesc: true,
-  });
+  const [sort, setSort] = useState({ column: labels[0] || "", isDesc: true });
+
+  useEffect(() => {
+    // Initial sorting of data
+    const sorted = sorting(sort.column);
+    setSortedData(sorted);
+  }, [sort, data]);
 
   const minRows = currentPage === 1 ? 1 : (currentPage - 1) * postPerPage + 1;
 
@@ -40,45 +41,36 @@ export default function MyTable({ labels, data }) {
       ? currentPage * postPerPage
       : sortedData.length;
 
-  // Set howmany entries to display
+  // Set how many entries to display
   const handleEntriesChange = (evt) => {
     setPostPerPage(parseInt(evt.target.value));
     setCurrentPage(1);
   };
 
-  // set sort descending or ascending
+  // Set sort descending or ascending
   const handleSort = (label) => {
-    if (sort.column === label) {
-      setSort({
-        ...sort,
-        isDesc: !sort.isDesc,
-      });
-    } else {
-      setSort({
+    setSort((prevSort) => {
+      const newSort = {
         column: label,
-        isDesc: false,
-      });
-    }
-
-    const sorted = sorting(label);
-    setSortedData(sorted);
+        isDesc: prevSort.column === label ? !prevSort.isDesc : false
+      };
+      const sorted = sorting(newSort.column, newSort.isDesc);
+      setSortedData(sorted);
+      return newSort;
+    });
   };
 
-  // Sort
-  const sorting = (label) => {
-    const sorted = sortedData.sort((a, b) => {
+  // Sort function
+  const sorting = (label, isDesc = sort.isDesc) => {
+    const sorted = [...data].sort((a, b) => {
       const labelA = normalizeText(a[label]);
       const labelB = normalizeText(b[label]);
 
-      if (sort.isDesc) {
-        if (labelA < labelB) return -1;
-        if (labelA > labelB) return 1;
+      if (isDesc) {
+        return labelA < labelB ? -1 : labelA > labelB ? 1 : 0;
       } else {
-        if (labelA < labelB) return 1;
-        if (labelA > labelB) return -1;
+        return labelA < labelB ? 1 : labelA > labelB ? -1 : 0;
       }
-
-      return 0;
     });
 
     return sorted;
