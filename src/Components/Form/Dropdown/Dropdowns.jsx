@@ -1,28 +1,19 @@
-import PropTypes from "prop-types";
+import React from "react";
 
-export default function Dropdown({ name, value, setDrop, datas, labelTitle }) {
+const Dropdown = ({ id, name, labelTitle, value, setDrop, datas }) => {
   return (
-    <label className="label" htmlFor={name}>
-      <p>{labelTitle}</p>
-      <select
-        name={name}
-        required
-        value={value}
-        onChange={(e) => setDrop(e.target.value)}
-      >
-        {datas.map((elt) => (
-          <option key={elt.id} value={elt.label}>
-            {elt.name}
+    <div className="dropdown-group">
+      <label htmlFor={id}>{labelTitle}</label>
+      <select id={id} name={name} value={value} onChange={(e) => setDrop(e.target.value)}>
+        {datas.map((data) => (
+          <option key={data.id} value={data.name}>
+            {data.label}
           </option>
         ))}
       </select>
-    </label>
+    </div>
   );
-}
-Dropdown.propTypes = {
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  setDrop: PropTypes.func,
-  datas: PropTypes.array,
-  labelTitle: PropTypes.string.isRequired,
 };
+
+export default Dropdown;
+

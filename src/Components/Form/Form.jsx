@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { add } from "../../Redux/Slice/employeeSlice";
 import DatePicker from "./DatePicker/MyDatePicker";
 import dataStates from "../../data/dataStates";
@@ -8,60 +9,62 @@ import Dropdown from "./Dropdown/Dropdowns";
 import Input from "./Input/Input";
 import Modal from "../Modal/Modal";
 import "./Form.css";
+import { selectEmployeeDetails } from "../../Redux/Selectors/selectors";
 
 const Form = () => {
+  const location = useLocation(); // Hook pour obtenir l'emplacement actuel
   const [
-    firstNameToAdd = "",
-    lastNameToAdd = "",
-    startDateToAdd = "",
-    departmentToAdd = "",
-    birthDateToAdd = "",
-    streetToAdd = "",
-    cityToAdd = "",
-    stateToAdd = "",
-    zipCodeToAdd = "",
-  ] = useSelector((state) => [
-    state.firstName,
-    state.lastName,
-    state.startDate,
-    state.department,
-    state.birthDate,
-    state.street,
-    state.city,
-    state.state,
-    state.zipCode,
-  ]);
+    firstNameToAdd,
+    lastNameToAdd,
+    startDateToAdd,
+    departmentToAdd,
+    birthDateToAdd,
+    streetToAdd,
+    cityToAdd,
+    stateToAdd,
+    zipCodeToAdd,
+  ] = useSelector(selectEmployeeDetails);
 
-  const [firstName, setFirstName] = useState(firstNameToAdd);
-  const [lastName, setLastName] = useState(lastNameToAdd);
-  const [birthDate, setBirthDate] = useState(birthDateToAdd);
-  const [startDate, setStartDate] = useState(startDateToAdd);
-  const [street, setStreet] = useState(streetToAdd);
-  const [city, setCity] = useState(cityToAdd);
-  const [state, setState] = useState(stateToAdd);
-  const [zipCode, setZipCode] = useState(zipCodeToAdd);
-  const [department, setDepartment] = useState(departmentToAdd);
+  const [firstName, setFirstName] = useState(firstNameToAdd || "");
+  const [lastName, setLastName] = useState(lastNameToAdd || "");
+  const [birthDate, setBirthDate] = useState(birthDateToAdd || "");
+  const [startDate, setStartDate] = useState(startDateToAdd || "");
+  const [street, setStreet] = useState(streetToAdd || "");
+  const [city, setCity] = useState(cityToAdd || "");
+  const [state, setState] = useState(stateToAdd || "");
+  const [zipCode, setZipCode] = useState(zipCodeToAdd || "");
+  const [department, setDepartment] = useState(departmentToAdd || "");
 
   const [valueBirthDate, setValueBirthDate] = useState(null);
   const [valueStartDate, setValueStartDate] = useState(null);
 
   const dispatch = useDispatch();
-
   const [openModal, setOpenModal] = useState(false);
-  const onOpenModal = () => setOpenModal(true);
-  const onCloseModal = () => setOpenModal(false);
 
-  const dateForTable = (date) => {
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const year = date.getUTCFullYear();
-    return `${month}/${day}/${year}`;
+  // Fonction pour réinitialiser les champs
+  const resetForm = () => {
+    setFirstName("");
+    setLastName("");
+    setBirthDate("");
+    setStartDate("");
+    setStreet("");
+    setCity("");
+    setState("");
+    setZipCode("");
+    setDepartment("");
+    setValueBirthDate(null);
+    setValueStartDate(null);
+  };
+
+  // Fonction pour fermer la modal et réinitialiser le formulaire
+  const onCloseModal = () => {
+    setOpenModal(false);
+    resetForm(); // Réinitialiser les champs du formulaire lorsque la modal se ferme
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Créez l'objet employee
     const employee = {
       firstName,
       lastName,
@@ -74,25 +77,21 @@ const Form = () => {
       zipCode,
     };
 
-    // Dispatch l'action pour ajouter l'employé
     dispatch(add(employee));
-
-    // Réinitialisez les champs du formulaire
-    setFirstName("");
-    setLastName("");
-    setBirthDate(null);
-    setStartDate(null);
-    setStreet("");
-    setCity("");
-    setState("");
-    setZipCode("");
-    setDepartment("");
-    setValueBirthDate(null);
-    setValueStartDate(null);
-
-    // Fermez la modal
-    onOpenModal();
+    setOpenModal(true); // Ouvrir la modal après l'envoi
   };
+
+  const dateForTable = (date) => {
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getUTCFullYear();
+    return `${month}/${day}/${year}`;
+  };
+
+  // Réinitialiser les données lorsque la localisation change
+  useEffect(() => {
+    resetForm();
+  }, [location]);
 
   return (
     <>
@@ -100,6 +99,7 @@ const Form = () => {
         <div className="form-description">Create Employee</div>
         <Input
           type="text"
+          id="firstname"
           name="firstname"
           labelTitle="First Name"
           value={firstName}
@@ -107,12 +107,14 @@ const Form = () => {
         />
         <Input
           type="text"
+          id="lastname"
           name="lastname"
           labelTitle="Last Name"
           value={lastName}
           setInput={setLastName}
         />
         <DatePicker
+          id="birthdate"
           labelTitle="Date of Birth"
           selected={valueBirthDate}
           setValueDate={setValueBirthDate}
@@ -120,17 +122,18 @@ const Form = () => {
           placeholder="MM/DD/YYYY"
         />
         <DatePicker
+          id="startdate"
           labelTitle="Start Date"
           selected={valueStartDate}
           setValueDate={setValueStartDate}
           setDate={setStartDate}
           placeholder="MM/DD/YYYY"
         />
-
         <div className="address">
-          <label className="address-label">Address</label>
+          <label htmlFor="street" className="address-label">Address</label>
           <Input
             type="text"
+            id="street"
             name="street"
             labelTitle="Street:"
             value={street}
@@ -138,12 +141,14 @@ const Form = () => {
           />
           <Input
             type="text"
+            id="city"
             name="city"
             labelTitle="City:"
             value={city}
             setInput={setCity}
           />
           <Dropdown
+            id="state"
             name="state"
             labelTitle="State:"
             value={state}
@@ -152,14 +157,15 @@ const Form = () => {
           />
           <Input
             type="number"
+            id="zipcode"
             name="zipcode"
             labelTitle="Zipcode:"
             value={zipCode}
             setInput={setZipCode}
           />
         </div>
-
         <Dropdown
+          id="department"
           name="department"
           labelTitle="Department"
           value={department}
@@ -168,6 +174,7 @@ const Form = () => {
         />
         <Input
           type="submit"
+          id="submit"
           name="submit"
           className="submit"
           value="Save"

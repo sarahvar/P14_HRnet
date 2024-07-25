@@ -1,38 +1,19 @@
-import PropTypes from "prop-types";
+// src/components/Form/Input/Input.jsx
+import React from "react";
 
-export default function Input({
-  type,
-  name,
-  labelTitle,
-  value,
-  setInput,
-  className,
-}) {
+const Input = ({ type, id, name, labelTitle, value, setInput }) => {
   return (
-    <label className="label" htmlFor={name}>
-      <p>{labelTitle}</p>
+    <div className="input-group">
+      <label htmlFor={id}>{labelTitle}</label>
       <input
-        className={className}
         type={type}
+        id={id}
         name={name}
         value={value}
-        required
-        onChange={(e) => {
-          setInput(e.target.value);
-        }}
+        onChange={(e) => setInput(e.target.value)}
       />
-    </label>
+    </div>
   );
-}
-
-Input.propTypes = {
-  type: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  labelTitle: PropTypes.string,
-  value: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.number.isRequired,
-  ]),
-  setInput: PropTypes.func,
-  className: PropTypes.string,
 };
+
+export default Input;
