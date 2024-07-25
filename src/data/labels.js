@@ -29,7 +29,7 @@ const labels = [
   },
   {
     text: "State",
-    value: "State",
+    value: "state",
   },
   {
     text: "Zip Code",

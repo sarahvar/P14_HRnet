@@ -7,6 +7,13 @@ import Search from "./TableSearch";
 import Table from "./Table";
 import TableFooter from "./TableFooter";
 import Pagination from "./Pagination";
+import dataStates from "../../data/dataStates"; // Importer les états
+
+// Créer un mappage pour les abréviations des états
+const stateIndexMap = dataStates.reduce((acc, state, index) => {
+  acc[state.label] = index;
+  return acc;
+}, {});
 
 export default function MyTable({ labels, data }) {
   // Pagination
@@ -67,11 +74,36 @@ export default function MyTable({ labels, data }) {
     console.log(`Sorting by: ${label}, isDesc: ${isDesc}`); // Debugging log
 
     const sorted = [...data].sort((a, b) => {
-      const valueA = a[label] ? normalizeText(a[label]) : ""; // Handle missing values
-      const valueB = b[label] ? normalizeText(b[label]) : ""; // Handle missing values
+      let valueA = a[label] !== undefined && a[label] !== null ? a[label] : "";
+      let valueB = b[label] !== undefined && b[label] !== null ? b[label] : "";
 
-      console.log(`Comparing: ${valueA} with ${valueB}`); // Debugging log
+      // Handle sorting by state using dataStates
+      if (label === 'state') {
+        const indexA = stateIndexMap[valueA] !== undefined ? stateIndexMap[valueA] : -1;
+        const indexB = stateIndexMap[valueB] !== undefined ? stateIndexMap[valueB] : -1;
+        
+        // Handle the case where the state is not found in stateIndexMap
+        if (indexA === -1) return isDesc ? 1 : -1;
+        if (indexB === -1) return isDesc ? -1 : 1;
 
+        return isDesc ? indexB - indexA : indexA - indexB;
+      }
+
+      // Handle sorting by date
+      if (label === 'birthDate') {
+        const dateA = new Date(valueA).getTime();
+        const dateB = new Date(valueB).getTime();
+        return isDesc ? dateB - dateA : dateA - dateB;
+      }
+
+      // Handle sorting by text (firstName, lastName)
+      if (label === 'firstName' || label === 'lastName') {
+        const textA = valueA.toLowerCase();
+        const textB = valueB.toLowerCase();
+        return isDesc ? (textA < textB ? 1 : textA > textB ? -1 : 0) : (textA < textB ? -1 : textA > textB ? 1 : 0);
+      }
+
+      // Standard sorting for other types of data
       if (isDesc) {
         return valueA < valueB ? -1 : valueA > valueB ? 1 : 0;
       } else {
