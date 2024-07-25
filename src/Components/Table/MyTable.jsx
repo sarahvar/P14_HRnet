@@ -16,7 +16,7 @@ export default function MyTable({ labels, data }) {
   // Sort and Search
   const [sortedData, setSortedData] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
-  const [sort, setSort] = useState({ column: labels[0] || "", isDesc: true });
+  const [sort, setSort] = useState({ column: labels[0].value || "", isDesc: true });
 
   useEffect(() => {
     // Initial sorting of data
@@ -30,12 +30,14 @@ export default function MyTable({ labels, data }) {
     currentPage * postPerPage < data.length
       ? currentPage * postPerPage
       : data.length;
+
   const minFilteredShow =
     currentPage === 1
       ? sortedData.length > 0
         ? 1
         : 0
       : (currentPage - 1) * postPerPage + 1;
+
   const maxFilteredShow =
     currentPage * postPerPage < sortedData.length
       ? currentPage * postPerPage
@@ -62,14 +64,18 @@ export default function MyTable({ labels, data }) {
 
   // Sort function
   const sorting = (label, isDesc = sort.isDesc) => {
+    console.log(`Sorting by: ${label}, isDesc: ${isDesc}`); // Debugging log
+
     const sorted = [...data].sort((a, b) => {
-      const labelA = normalizeText(a[label]);
-      const labelB = normalizeText(b[label]);
+      const valueA = a[label] ? normalizeText(a[label]) : ""; // Handle missing values
+      const valueB = b[label] ? normalizeText(b[label]) : ""; // Handle missing values
+
+      console.log(`Comparing: ${valueA} with ${valueB}`); // Debugging log
 
       if (isDesc) {
-        return labelA < labelB ? -1 : labelA > labelB ? 1 : 0;
+        return valueA < valueB ? -1 : valueA > valueB ? 1 : 0;
       } else {
-        return labelA < labelB ? 1 : labelA > labelB ? -1 : 0;
+        return valueA < valueB ? 1 : valueA > valueB ? -1 : 0;
       }
     });
 
@@ -117,6 +123,9 @@ export default function MyTable({ labels, data }) {
 }
 
 MyTable.propTypes = {
-  labels: PropTypes.array.isRequired,
-  data: PropTypes.array.isRequired,
+  labels: PropTypes.arrayOf(PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+  })).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
