@@ -1,99 +1,48 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Table.css";
 
-import { generateID } from "../../utils/utils";
-
-export default function Table({
-  labels,
-  data,
-  minRows,
-  maxRows,
-  handleSort,
-  sort,
-  sortedData,
-}) {
-  const { column, isDesc } = sort;
-
+const Table = ({ labels, data, minRows, maxRows, handleSort, sort }) => {
   return (
-    <table className="table-main">
-      <caption className="table-title">Current Employees</caption>
+    <table className="table">
       <thead>
-        <tr className="table-header-row">
-          {/* labels*/}
+        <tr>
           {labels.map((label) => (
-            <th
-              key={generateID()}
-              className="table-header-cells"
-              onClick={() => handleSort(label.value)}
-            >
-              <div className="table-header-cell">
-                <span>{label.text}</span>
-                <div className="sort-icons">
-                  <div
-                    className={
-                      column === label.value
-                        ? !isDesc
-                          ? "sort-icons-up icon-up-active"
-                          : "sort-icons-up icon-up-inactive"
-                        : "sort-icons-up"
-                    }
-                  ></div>
-                  <div
-                    className={
-                      column === label.value
-                        ? isDesc
-                          ? "sort-icons-down icon-down-active"
-                          : "sort-icons-down icon-inactive"
-                        : "sort-icons-down"
-                    }
-                  ></div>
-                </div>
-              </div>
+            <th key={label.value} onClick={() => handleSort(label.value)}>
+              {label.text}
+              {sort.column === label.value ? (sort.isDesc ? " 🔽" : " 🔼") : null}
             </th>
           ))}
         </tr>
       </thead>
-
       <tbody>
-        {/* if the table is empty */}
-        {sortedData.length === 0 && (
-          <tr>
-            <td className="nodata" colSpan={labels.length}>
-              No data available in table
-            </td>
+        {data.map((row, index) => (
+          <tr key={index}>
+            {labels.map((label) => (
+              <td key={label.value}>{row[label.value]}</td>
+            ))}
           </tr>
-        )}
-        {/* Display the current page */}
-        {data.map((elt, index) => {
-          if (index + 1 >= minRows && index < maxRows) {
-            return (
-              <tr key={generateID()} className="dtb-table-row">
-                {Object.values(elt).map((value, j) => (
-                  <td
-                    key={generateID()}
-                    className={
-                      j === 0 ? "dtb-table-cell first-cell" : "dtb-table-cell"
-                    }
-                  >
-                    {value}
-                  </td>
-                ))}
-              </tr>
-            );
-          }
-          return null;
-        })}
+        ))}
       </tbody>
     </table>
   );
-}
+};
 
 Table.propTypes = {
-  labels: PropTypes.array.isRequired,
-  data: PropTypes.array.isRequired,
-  sortedData: PropTypes.array.isRequired,
-  sort: PropTypes.object.isRequired,
+  labels: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
   minRows: PropTypes.number.isRequired,
   maxRows: PropTypes.number.isRequired,
   handleSort: PropTypes.func.isRequired,
+  sort: PropTypes.shape({
+    column: PropTypes.string.isRequired,
+    isDesc: PropTypes.bool.isRequired,
+  }).isRequired,
 };
+
+export default Table;

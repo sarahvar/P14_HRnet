@@ -1,12 +1,13 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import MyTable from "../../Components/Table/MyTable";
 import labels from "../../data/labels";
+import employeesMockData from "../../mocks/employees.json";
 import "./Employees.css";
 
 export default function Employees() {
-  const employees = useSelector((state) => state.employee.employees);
+  // Utilisez les données fictives importées
+  const employees = employeesMockData;
 
   return (
     <div className="employees">

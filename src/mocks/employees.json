@@ -1,0 +1,57 @@
+[
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "startDate": "2010-05-01",
+        "department": "Marketing",
+        "birthDate": "1985-04-12",
+        "street": "123 Main St",
+        "city": "Springfield",
+        "state": "IL",
+        "zipCode": "62701"
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "startDate": "2005-07-15",
+        "department": "Sales",
+        "birthDate": "1979-08-22",
+        "street": "456 Oak St",
+        "city": "Madison",
+        "state": "WI",
+        "zipCode": "53703"
+    },
+    {
+        "firstName": "Alice",
+        "lastName": "Johnson",
+        "startDate": "2018-01-20",
+        "department": "Human Resources",
+        "birthDate": "1992-03-05",
+        "street": "789 Pine St",
+        "city": "Austin",
+        "state": "TX",
+        "zipCode": "73301"
+    },
+    {
+        "firstName": "Bob",
+        "lastName": "Brown",
+        "startDate": "1990-04-10",
+        "department": "Legal",
+        "birthDate": "1967-11-30",
+        "street": "101 Maple St",
+        "city": "Seattle",
+        "state": "WA",
+        "zipCode": "98101"
+    },
+    {
+        "firstName": "Carol",
+        "lastName": "Davis",
+        "startDate": "2015-09-05",
+        "department": "Engineering",
+        "birthDate": "1988-06-12",
+        "street": "202 Birch St",
+        "city": "Denver",
+        "state": "CO",
+        "zipCode": "80202"
+    }
+]

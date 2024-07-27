@@ -1,15 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import { normalizeText } from "../../utils/utils";
 
-// Search in every entries
-
-export default function Search({
-  data,
-  handleDisplayedData,
-  handleIsSearching,
-}) {
+export default function Search({ data, handleDisplayedData, handleIsSearching }) {
   const handleSearch = (evt) => {
     const value = normalizeText(evt.target.value);
     if (value.length > 0) {
@@ -45,3 +38,4 @@ Search.propTypes = {
   handleDisplayedData: PropTypes.func.isRequired,
   handleIsSearching: PropTypes.func.isRequired,
 };
+

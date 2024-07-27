@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./Table.css";
-import { normalizeText } from "../../utils/utils";
 import Entries from "./Entries";
 import Search from "./TableSearch";
 import Table from "./Table";
@@ -16,47 +15,27 @@ const stateIndexMap = dataStates.reduce((acc, state, index) => {
 }, {});
 
 export default function MyTable({ labels, data }) {
-  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(10);
-  
+
   // Sort and Search
   const [sortedData, setSortedData] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [sort, setSort] = useState({ column: labels[0].value || "", isDesc: true });
 
   useEffect(() => {
-    // Initial sorting of data
-    const sorted = sorting(sort.column);
+    const sorted = sorting(sort.column, sort.isDesc);
     setSortedData(sorted);
   }, [sort, data]);
 
   const minRows = currentPage === 1 ? 1 : (currentPage - 1) * postPerPage + 1;
+  const maxRows = currentPage * postPerPage < sortedData.length ? currentPage * postPerPage : sortedData.length;
 
-  const maxRows =
-    currentPage * postPerPage < data.length
-      ? currentPage * postPerPage
-      : data.length;
-
-  const minFilteredShow =
-    currentPage === 1
-      ? sortedData.length > 0
-        ? 1
-        : 0
-      : (currentPage - 1) * postPerPage + 1;
-
-  const maxFilteredShow =
-    currentPage * postPerPage < sortedData.length
-      ? currentPage * postPerPage
-      : sortedData.length;
-
-  // Set how many entries to display
   const handleEntriesChange = (evt) => {
     setPostPerPage(parseInt(evt.target.value));
     setCurrentPage(1);
   };
 
-  // Set sort descending or ascending
   const handleSort = (label) => {
     setSort((prevSort) => {
       const newSort = {
@@ -69,46 +48,34 @@ export default function MyTable({ labels, data }) {
     });
   };
 
-  // Sort function
-  const sorting = (label, isDesc = sort.isDesc) => {
-    console.log(`Sorting by: ${label}, isDesc: ${isDesc}`); // Debugging log
-
+  const sorting = (label, isDesc) => {
     const sorted = [...data].sort((a, b) => {
       let valueA = a[label] !== undefined && a[label] !== null ? a[label] : "";
       let valueB = b[label] !== undefined && b[label] !== null ? b[label] : "";
 
-      // Handle sorting by state using dataStates
       if (label === 'state') {
         const indexA = stateIndexMap[valueA] !== undefined ? stateIndexMap[valueA] : -1;
         const indexB = stateIndexMap[valueB] !== undefined ? stateIndexMap[valueB] : -1;
         
-        // Handle the case where the state is not found in stateIndexMap
         if (indexA === -1) return isDesc ? 1 : -1;
         if (indexB === -1) return isDesc ? -1 : 1;
 
         return isDesc ? indexB - indexA : indexA - indexB;
       }
 
-      // Handle sorting by date
       if (label === 'birthDate') {
         const dateA = new Date(valueA).getTime();
         const dateB = new Date(valueB).getTime();
         return isDesc ? dateB - dateA : dateA - dateB;
       }
 
-      // Handle sorting by text (firstName, lastName)
       if (label === 'firstName' || label === 'lastName') {
         const textA = valueA.toLowerCase();
         const textB = valueB.toLowerCase();
         return isDesc ? (textA < textB ? 1 : textA > textB ? -1 : 0) : (textA < textB ? -1 : textA > textB ? 1 : 0);
       }
 
-      // Standard sorting for other types of data
-      if (isDesc) {
-        return valueA < valueB ? -1 : valueA > valueB ? 1 : 0;
-      } else {
-        return valueA < valueB ? 1 : valueA > valueB ? -1 : 0;
-      }
+      return isDesc ? (valueA > valueB ? -1 : 1) : (valueA > valueB ? 1 : -1);
     });
 
     return sorted;
@@ -126,12 +93,11 @@ export default function MyTable({ labels, data }) {
       </div>
       <Table
         labels={labels}
-        data={sortedData}
+        data={sortedData.slice(minRows - 1, maxRows)}
         minRows={minRows}
         maxRows={maxRows}
         handleSort={handleSort}
         sort={sort}
-        sortedData={sortedData}
       />
       <div className="table-footer">
         <TableFooter
@@ -139,8 +105,8 @@ export default function MyTable({ labels, data }) {
           maxRows={maxRows}
           totalEntries={data.length}
           isSearching={isSearching}
-          minFilteredShow={minFilteredShow}
-          maxFilteredShow={maxFilteredShow}
+          minFilteredShow={minRows}
+          maxFilteredShow={maxRows}
           totalEntriesShow={sortedData.length}
         />
         <Pagination
@@ -161,3 +127,4 @@ MyTable.propTypes = {
   })).isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+
