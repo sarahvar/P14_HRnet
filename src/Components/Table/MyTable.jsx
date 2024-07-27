@@ -8,7 +8,6 @@ import TableFooter from "./TableFooter";
 import Pagination from "./Pagination";
 import dataStates from "../../data/dataStates"; // Importer les états
 
-// Créer un mappage pour les abréviations des états
 const stateIndexMap = dataStates.reduce((acc, state, index) => {
   acc[state.label] = index;
   return acc;
@@ -17,11 +16,9 @@ const stateIndexMap = dataStates.reduce((acc, state, index) => {
 export default function MyTable({ labels, data }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(10);
-
-  // Sort and Search
   const [sortedData, setSortedData] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
-  const [sort, setSort] = useState({ column: labels[0].value || "", isDesc: true });
+  const [sort, setSort] = useState({ column: labels[0].value || "", isDesc: false });
 
   useEffect(() => {
     const sorted = sorting(sort.column, sort.isDesc);
@@ -40,7 +37,7 @@ export default function MyTable({ labels, data }) {
     setSort((prevSort) => {
       const newSort = {
         column: label,
-        isDesc: prevSort.column === label ? !prevSort.isDesc : false
+        isDesc: prevSort.column === label ? !prevSort.isDesc : false // Premier clic ascendant
       };
       const sorted = sorting(newSort.column, newSort.isDesc);
       setSortedData(sorted);
@@ -127,4 +124,5 @@ MyTable.propTypes = {
   })).isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+
 

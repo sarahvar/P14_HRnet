@@ -10,7 +10,7 @@ const Table = ({ labels, data, minRows, maxRows, handleSort, sort }) => {
           {labels.map((label) => (
             <th key={label.value} onClick={() => handleSort(label.value)}>
               {label.text}
-              {sort.column === label.value ? (sort.isDesc ? " 🔽" : " 🔼") : null}
+              {sort.column === label.value ? (sort.isDesc ? " 🔽" : " 🔼") : " ↕"}
             </th>
           ))}
         </tr>
@@ -46,3 +46,4 @@ Table.propTypes = {
 };
 
 export default Table;
+
