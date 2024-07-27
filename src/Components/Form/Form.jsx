@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { add } from "../../Redux/Slice/employeeSlice";
+import { addEmployee } from "../../Redux/Slice/employeeSlice";
 import DatePicker from "./DatePicker/MyDatePicker";
 import dataStates from "../../data/dataStates";
 import dataDepartments from "../../data/dataDepartments";
@@ -77,7 +77,7 @@ const Form = () => {
       zipCode,
     };
 
-    dispatch(add(employee));
+    dispatch(addEmployee(employee));
     setOpenModal(true); // Ouvrir la modal après l'envoi
   };
 
