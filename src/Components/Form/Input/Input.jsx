@@ -1,4 +1,4 @@
-// src/components/Form/Input/Input.jsx
+
 import React from "react";
 
 const Input = ({ type, id, name, labelTitle, value, setInput }) => {

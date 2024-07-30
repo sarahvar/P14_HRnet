@@ -147,14 +147,15 @@ const Form = () => {
             value={city}
             setInput={setCity}
           />
-          <Dropdown
-            id="state"
-            name="state"
-            labelTitle="State:"
-            value={state}
-            setDrop={setState}
-            datas={dataStates}
-          />
+        <Dropdown
+        id="state"
+        name="state"
+        labelTitle="State:"
+        value={state}
+        setDrop={setState}
+        datas={dataStates}
+        placeholder="Select State"
+      />
           <Input
             type="number"
             id="zipcode"
@@ -165,13 +166,14 @@ const Form = () => {
           />
         </div>
         <Dropdown
-          id="department"
-          name="department"
-          labelTitle="Department"
-          value={department}
-          setDrop={setDepartment}
-          datas={dataDepartments}
-        />
+        id="department"
+        name="department"
+        labelTitle="Department:"
+        value={department}
+        setDrop={setDepartment}
+        datas={dataDepartments}
+        placeholder="Select Department"
+      />
         <Input
           type="submit"
           id="submit"
