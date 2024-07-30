@@ -48,6 +48,7 @@ export default function MyDatePicker({
         isClearable
         placeholderText={placeholder}
         fixedHeight
+        showMonthDropdown
         useShortMonthInDropdown
         showYearDropdown
         dropdownMode="select"
