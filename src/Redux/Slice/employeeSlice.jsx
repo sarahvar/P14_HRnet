@@ -1,18 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = {
-  employees: [],
-};
+import { createSlice } from '@reduxjs/toolkit';
+import employeesMockData from '../../mocks/employees.json';
 
 const employeeSlice = createSlice({
-  name: "employee",
-  initialState,
+  name: 'employee',
+  initialState: {
+    employees: employeesMockData,
+  },
   reducers: {
-    add: (state, action) => {
+    addEmployee: (state, action) => {
       state.employees.push(action.payload);
     },
   },
 });
 
-export const { add } = employeeSlice.actions;
+export const { addEmployee } = employeeSlice.actions;
 export default employeeSlice.reducer;
+
