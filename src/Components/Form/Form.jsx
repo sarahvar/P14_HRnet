@@ -7,7 +7,9 @@ import dataStates from "../../data/dataStates";
 import dataDepartments from "../../data/dataDepartments";
 import Dropdown from "./Dropdown/Dropdowns";
 import Input from "./Input/Input";
-import Modal from "../Modal/Modal";
+import Modal from 'react-modal-sarahvar';
+import 'react-modal-sarahvar/dist/index.css';
+
 import "./Form.css";
 import { selectEmployeeDetails } from "../../Redux/Selectors/selectors";
 
