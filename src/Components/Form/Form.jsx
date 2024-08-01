@@ -55,6 +55,7 @@ const Form = () => {
   const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(false);
 
+  // Reset form fields
   const resetForm = () => {
     setFirstName("");
     setLastName("");
@@ -80,25 +81,27 @@ const Form = () => {
     });
   };
 
+  // Close the modal and reset the form
   const onCloseModal = () => {
     setOpenModal(false);
     resetForm();
   };
 
+  // Validate form fields
   const validateForm = () => {
     let valid = true;
     let errors = {};
 
-    const nameRegex = /^[A-Za-z]{2,}$/;
-    const streetRegex = /^.*\d+.*$/;
-    const zipCodeRegex = /^\d{5}$/;
+    const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ '-]{2,}$/; // Regex to validate names
+    const streetRegex = /^.*\d+.*$/; // Regex to ensure street contains digits
+    const zipCodeRegex = /^\d{5}$/; // Regex to validate zip code (5 digits)
 
     if (!nameRegex.test(firstName)) {
-      errors.firstName = "First name must be at least 2 characters and contain only letters.";
+      errors.firstName = "First name must be at least 2 characters long and contain only letters, spaces, or hyphens.";
       valid = false;
     }
     if (!nameRegex.test(lastName)) {
-      errors.lastName = "Last name must be at least 2 characters and contain only letters.";
+      errors.lastName = "Last name must be at least 2 characters long and contain only letters, spaces, or hyphens.";
       valid = false;
     }
     if (!isDateOfBirthValid(birthDate)) {
@@ -108,13 +111,16 @@ const Form = () => {
     if (!startDate) {
       errors.startDate = "Start date is required.";
       valid = false;
+    } else if (birthDate && new Date(birthDate) >= new Date(startDate)) {
+      errors.startDate = "Start date must be after the date of birth.";
+      valid = false;
     }
     if (street.length < 2 || !streetRegex.test(street)) {
       errors.street = "Street must be at least 2 characters long and contain at least one digit.";
       valid = false;
     }
     if (city.length < 2) {
-      errors.city = "City must be at least 2 characters.";
+      errors.city = "City must be at least 2 characters long.";
       valid = false;
     }
     if (!state) {
@@ -134,6 +140,7 @@ const Form = () => {
     return valid;
   };
 
+  // Check if the date of birth is valid (at least 16 years old)
   const isDateOfBirthValid = (birthDate) => {
     const birthDateObj = new Date(birthDate);
     const today = new Date();
@@ -144,6 +151,7 @@ const Form = () => {
     return age > 16 || (age === 16 && (monthDifference > 0 || (monthDifference === 0 && dayDifference >= 0)));
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -151,9 +159,9 @@ const Form = () => {
       const employee = {
         firstName,
         lastName,
-        startDate: dateForTable(new Date(startDate)),
+        startDate: formatDateForTable(new Date(startDate)),
         department,
-        birthDate: dateForTable(new Date(birthDate)),
+        birthDate: formatDateForTable(new Date(birthDate)),
         street,
         city,
         state,
@@ -165,13 +173,15 @@ const Form = () => {
     }
   };
 
-  const dateForTable = (date) => {
+  // Format date for table (MM/DD/YYYY)
+  const formatDateForTable = (date) => {
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const year = date.getUTCFullYear();
     return `${month}/${day}/${year}`;
   };
 
+  // Reset form when location changes
   useEffect(() => {
     resetForm();
   }, [location]);
@@ -292,7 +302,6 @@ const Form = () => {
 };
 
 export default Form;
-
 
 
 
