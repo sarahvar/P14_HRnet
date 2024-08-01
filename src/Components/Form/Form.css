@@ -67,7 +67,15 @@ form {
   font-size: 1rem;
   color: #333;
 }
+.form-group {
+  margin-bottom: 1em;
+}
 
+.error-message {
+  color: red;
+  font-size: 0.875em;
+  margin-top: 0.25em;
+}
 /* Bouton de soumission */
 .submit {
   width: 100%;

@@ -27,6 +27,7 @@ const Form = () => {
     zipCodeToAdd,
   ] = useSelector(selectEmployeeDetails);
 
+  // États pour les champs du formulaire
   const [firstName, setFirstName] = useState(firstNameToAdd || "");
   const [lastName, setLastName] = useState(lastNameToAdd || "");
   const [birthDate, setBirthDate] = useState(birthDateToAdd || "");
@@ -37,8 +38,22 @@ const Form = () => {
   const [zipCode, setZipCode] = useState(zipCodeToAdd || "");
   const [department, setDepartment] = useState(departmentToAdd || "");
 
+  // États pour les dates sélectionnées
   const [valueBirthDate, setValueBirthDate] = useState(null);
   const [valueStartDate, setValueStartDate] = useState(null);
+
+  // États pour les messages d'erreur
+  const [errors, setErrors] = useState({
+    firstName: "",
+    lastName: "",
+    birthDate: "",
+    startDate: "",
+    street: "",
+    city: "",
+    state: "",
+    zipCode: "",
+    department: "",
+  });
 
   const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(false);
@@ -56,6 +71,17 @@ const Form = () => {
     setDepartment("");
     setValueBirthDate(null);
     setValueStartDate(null);
+    setErrors({
+      firstName: "",
+      lastName: "",
+      birthDate: "",
+      startDate: "",
+      street: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      department: "",
+    });
   };
 
   // Fonction pour fermer la modal et réinitialiser le formulaire
@@ -66,21 +92,63 @@ const Form = () => {
 
   // Fonction de validation des champs
   const validateForm = () => {
+    let valid = true;
+    let errors = {};
+
     // Regex pour valider que les champs contiennent uniquement des lettres et ont au moins 2 caractères
     const nameRegex = /^[A-Za-z]{2,}$/;
-    
-    // Vérification de tous les champs
-    return (
-      nameRegex.test(firstName) &&
-      nameRegex.test(lastName) &&
-      birthDate &&
-      startDate &&
-      street &&
-      city &&
-      state &&
-      zipCode &&
-      department
-    );
+
+    // Validation des champs
+    if (!nameRegex.test(firstName)) {
+      errors.firstName = "First name must be at least 2 characters and contain only letters.";
+      valid = false;
+    }
+    if (!nameRegex.test(lastName)) {
+      errors.lastName = "Last name must be at least 2 characters and contain only letters.";
+      valid = false;
+    }
+    if (!isDateOfBirthValid(birthDate)) {
+      errors.birthDate = "You must be at least 16 years old.";
+      valid = false;
+    }
+    if (!startDate) {
+      errors.startDate = "Start date is required.";
+      valid = false;
+    }
+    if (!street) {
+      errors.street = "Street is required.";
+      valid = false;
+    }
+    if (!city) {
+      errors.city = "City is required.";
+      valid = false;
+    }
+    if (!state) {
+      errors.state = "State is required.";
+      valid = false;
+    }
+    if (!zipCode) {
+      errors.zipCode = "Zip code is required.";
+      valid = false;
+    }
+    if (!department) {
+      errors.department = "Department is required.";
+      valid = false;
+    }
+
+    setErrors(errors);
+    return valid;
+  };
+
+  // Fonction pour vérifier si la date de naissance est valide (au moins 16 ans)
+  const isDateOfBirthValid = (birthDate) => {
+    const birthDateObj = new Date(birthDate);
+    const today = new Date();
+    const age = today.getFullYear() - birthDateObj.getFullYear();
+    const monthDifference = today.getMonth() - birthDateObj.getMonth();
+    const dayDifference = today.getDate() - birthDateObj.getDate();
+
+    return age > 16 || (age === 16 && (monthDifference > 0 || (monthDifference === 0 && dayDifference >= 0)));
   };
 
   const handleSubmit = (e) => {
@@ -101,8 +169,6 @@ const Form = () => {
 
       dispatch(addEmployee(employee));
       setOpenModal(true); // Ouvrir la modal après l'envoi
-    } else {
-      alert("Please fill in all fields with valid data."); // Alerte si les champs ne sont pas tous remplis ou valides
     }
   };
 
@@ -122,39 +188,51 @@ const Form = () => {
     <>
       <form onSubmit={handleSubmit}>
         <div className="form-description">Create Employee</div>
-        <Input
-          type="text"
-          id="firstname"
-          name="firstname"
-          labelTitle="First Name"
-          value={firstName}
-          setInput={setFirstName}
-        />
-        <Input
-          type="text"
-          id="lastname"
-          name="lastname"
-          labelTitle="Last Name"
-          value={lastName}
-          setInput={setLastName}
-        />
-        <DatePicker
-          id="birthdate"
-          labelTitle="Date of Birth"
-          selected={valueBirthDate}
-          setValueDate={setValueBirthDate}
-          setDate={setBirthDate}
-          placeholder="MM/DD/YYYY"
-        />
-        <DatePicker
-          id="startdate"
-          labelTitle="Start Date"
-          selected={valueStartDate}
-          setValueDate={setValueStartDate}
-          setDate={setStartDate}
-          placeholder="MM/DD/YYYY"
-        />
-        <div className="address">
+        <div className="form-group">
+          <Input
+            type="text"
+            id="firstname"
+            name="firstname"
+            labelTitle="First Name"
+            value={firstName}
+            setInput={setFirstName}
+          />
+          {errors.firstName && <div className="error-message">{errors.firstName}</div>}
+        </div>
+        <div className="form-group">
+          <Input
+            type="text"
+            id="lastname"
+            name="lastname"
+            labelTitle="Last Name"
+            value={lastName}
+            setInput={setLastName}
+          />
+          {errors.lastName && <div className="error-message">{errors.lastName}</div>}
+        </div>
+        <div className="form-group">
+          <DatePicker
+            id="birthdate"
+            labelTitle="Date of Birth"
+            selected={valueBirthDate}
+            setValueDate={setValueBirthDate}
+            setDate={setBirthDate}
+            placeholder="MM/DD/YYYY"
+          />
+          {errors.birthDate && <div className="error-message">{errors.birthDate}</div>}
+        </div>
+        <div className="form-group">
+          <DatePicker
+            id="startdate"
+            labelTitle="Start Date"
+            selected={valueStartDate}
+            setValueDate={setValueStartDate}
+            setDate={setStartDate}
+            placeholder="MM/DD/YYYY"
+          />
+          {errors.startDate && <div className="error-message">{errors.startDate}</div>}
+        </div>
+        <div className="form-group address">
           <label htmlFor="street" className="address-label">Address</label>
           <Input
             type="text"
@@ -164,6 +242,7 @@ const Form = () => {
             value={street}
             setInput={setStreet}
           />
+          {errors.street && <div className="error-message">{errors.street}</div>}
           <Input
             type="text"
             id="city"
@@ -172,15 +251,17 @@ const Form = () => {
             value={city}
             setInput={setCity}
           />
-        <Dropdown
-        id="state"
-        name="state"
-        labelTitle="State:"
-        value={state}
-        setDrop={setState}
-        datas={dataStates}
-        placeholder="Select State"
-      />
+          {errors.city && <div className="error-message">{errors.city}</div>}
+          <Dropdown
+            id="state"
+            name="state"
+            labelTitle="State:"
+            value={state}
+            setDrop={setState}
+            datas={dataStates}
+            placeholder="Select State"
+          />
+          {errors.state && <div className="error-message">{errors.state}</div>}
           <Input
             type="number"
             id="zipcode"
@@ -189,23 +270,29 @@ const Form = () => {
             value={zipCode}
             setInput={setZipCode}
           />
+          {errors.zipCode && <div className="error-message">{errors.zipCode}</div>}
         </div>
-        <Dropdown
-        id="department"
-        name="department"
-        labelTitle="Department:"
-        value={department}
-        setDrop={setDepartment}
-        datas={dataDepartments}
-        placeholder="Select Department"
-      />
-        <Input
-          type="submit"
-          id="submit"
-          name="submit"
-          className="submit"
-          value="Save"
-        />
+        <div className="form-group">
+          <Dropdown
+            id="department"
+            name="department"
+            labelTitle="Department:"
+            value={department}
+            setDrop={setDepartment}
+            datas={dataDepartments}
+            placeholder="Select Department"
+          />
+          {errors.department && <div className="error-message">{errors.department}</div>}
+        </div>
+        <div className="form-group">
+          <Input
+            type="submit"
+            id="submit"
+            name="submit"
+            className="submit"
+            value="Save"
+          />
+        </div>
       </form>
       <Modal isOpen={openModal} onClose={onCloseModal}>
         Employee Created!
@@ -215,4 +302,5 @@ const Form = () => {
 };
 
 export default Form;
+
 
