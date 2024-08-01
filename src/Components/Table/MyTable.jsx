@@ -60,7 +60,7 @@ export default function MyTable({ labels, data }) {
         return isDesc ? indexB - indexA : indexA - indexB;
       }
 
-      if (label === 'birthDate') {
+      if (label === 'birthDate' || label === 'startDate') {
         const dateA = new Date(valueA).getTime();
         const dateB = new Date(valueB).getTime();
         return isDesc ? dateB - dateA : dateA - dateB;
