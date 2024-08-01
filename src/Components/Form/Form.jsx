@@ -95,6 +95,7 @@ const Form = () => {
     const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ '-]{2,}$/; // Regex to validate names
     const streetRegex = /^.*\d+.*$/; // Regex to ensure street contains digits
     const zipCodeRegex = /^\d{5}$/; // Regex to validate zip code (5 digits)
+    const cityRegex = /^[A-Z][A-Za-zÀ-ÖØ-öø-ÿ '-]{1,}$/; // Regex to ensure city starts with an uppercase letter
 
     if (!nameRegex.test(firstName)) {
       errors.firstName = "First name must be at least 2 characters long and contain only letters, spaces, or hyphens.";
@@ -119,8 +120,8 @@ const Form = () => {
       errors.street = "Street must be at least 2 characters long and contain at least one digit.";
       valid = false;
     }
-    if (city.length < 2) {
-      errors.city = "City must be at least 2 characters long.";
+    if (!cityRegex.test(city)) {
+      errors.city = "City must start with an uppercase letter and be at least 2 characters long.";
       valid = false;
     }
     if (!state) {
@@ -302,6 +303,7 @@ const Form = () => {
 };
 
 export default Form;
+
 
 
 
