@@ -66,9 +66,13 @@ const Form = () => {
 
   // Fonction de validation des champs
   const validateForm = () => {
+    // Regex pour valider que les champs contiennent uniquement des lettres et ont au moins 2 caractères
+    const nameRegex = /^[A-Za-z]{2,}$/;
+    
+    // Vérification de tous les champs
     return (
-      firstName &&
-      lastName &&
+      nameRegex.test(firstName) &&
+      nameRegex.test(lastName) &&
       birthDate &&
       startDate &&
       street &&
@@ -98,7 +102,7 @@ const Form = () => {
       dispatch(addEmployee(employee));
       setOpenModal(true); // Ouvrir la modal après l'envoi
     } else {
-      alert("Please fill in all fields."); // Alerte si les champs ne sont pas tous remplis
+      alert("Please fill in all fields with valid data."); // Alerte si les champs ne sont pas tous remplis ou valides
     }
   };
 
@@ -211,3 +215,4 @@ const Form = () => {
 };
 
 export default Form;
+
