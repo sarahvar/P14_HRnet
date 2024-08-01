@@ -14,7 +14,7 @@ import "./Form.css";
 import { selectEmployeeDetails } from "../../Redux/Selectors/selectors";
 
 const Form = () => {
-  const location = useLocation(); // Hook pour obtenir l'emplacement actuel
+  const location = useLocation();
   const [
     firstNameToAdd,
     lastNameToAdd,
@@ -27,7 +27,6 @@ const Form = () => {
     zipCodeToAdd,
   ] = useSelector(selectEmployeeDetails);
 
-  // États pour les champs du formulaire
   const [firstName, setFirstName] = useState(firstNameToAdd || "");
   const [lastName, setLastName] = useState(lastNameToAdd || "");
   const [birthDate, setBirthDate] = useState(birthDateToAdd || "");
@@ -38,11 +37,9 @@ const Form = () => {
   const [zipCode, setZipCode] = useState(zipCodeToAdd || "");
   const [department, setDepartment] = useState(departmentToAdd || "");
 
-  // États pour les dates sélectionnées
   const [valueBirthDate, setValueBirthDate] = useState(null);
   const [valueStartDate, setValueStartDate] = useState(null);
 
-  // États pour les messages d'erreur
   const [errors, setErrors] = useState({
     firstName: "",
     lastName: "",
@@ -58,7 +55,6 @@ const Form = () => {
   const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(false);
 
-  // Fonction pour réinitialiser les champs
   const resetForm = () => {
     setFirstName("");
     setLastName("");
@@ -84,21 +80,19 @@ const Form = () => {
     });
   };
 
-  // Fonction pour fermer la modal et réinitialiser le formulaire
   const onCloseModal = () => {
     setOpenModal(false);
-    resetForm(); // Réinitialiser les champs du formulaire lorsque la modal se ferme
+    resetForm();
   };
 
-  // Fonction de validation des champs
   const validateForm = () => {
     let valid = true;
     let errors = {};
 
-    // Regex pour valider que les champs contiennent uniquement des lettres et ont au moins 2 caractères
     const nameRegex = /^[A-Za-z]{2,}$/;
+    const streetRegex = /^.*\d+.*$/;
+    const zipCodeRegex = /^\d{5}$/;
 
-    // Validation des champs
     if (!nameRegex.test(firstName)) {
       errors.firstName = "First name must be at least 2 characters and contain only letters.";
       valid = false;
@@ -115,20 +109,20 @@ const Form = () => {
       errors.startDate = "Start date is required.";
       valid = false;
     }
-    if (!street) {
-      errors.street = "Street is required.";
+    if (street.length < 2 || !streetRegex.test(street)) {
+      errors.street = "Street must be at least 2 characters long and contain at least one digit.";
       valid = false;
     }
-    if (!city) {
-      errors.city = "City is required.";
+    if (city.length < 2) {
+      errors.city = "City must be at least 2 characters.";
       valid = false;
     }
     if (!state) {
       errors.state = "State is required.";
       valid = false;
     }
-    if (!zipCode) {
-      errors.zipCode = "Zip code is required.";
+    if (!zipCodeRegex.test(zipCode)) {
+      errors.zipCode = "Zip code must be exactly 5 digits.";
       valid = false;
     }
     if (!department) {
@@ -140,7 +134,6 @@ const Form = () => {
     return valid;
   };
 
-  // Fonction pour vérifier si la date de naissance est valide (au moins 16 ans)
   const isDateOfBirthValid = (birthDate) => {
     const birthDateObj = new Date(birthDate);
     const today = new Date();
@@ -168,7 +161,7 @@ const Form = () => {
       };
 
       dispatch(addEmployee(employee));
-      setOpenModal(true); // Ouvrir la modal après l'envoi
+      setOpenModal(true);
     }
   };
 
@@ -179,7 +172,6 @@ const Form = () => {
     return `${month}/${day}/${year}`;
   };
 
-  // Réinitialiser les données lorsque la localisation change
   useEffect(() => {
     resetForm();
   }, [location]);
@@ -284,15 +276,13 @@ const Form = () => {
           />
           {errors.department && <div className="error-message">{errors.department}</div>}
         </div>
-        <div className="form-group">
-          <Input
-            type="submit"
-            id="submit"
-            name="submit"
-            className="submit"
-            value="Save"
-          />
-        </div>
+        <Input
+          type="submit"
+          id="submit"
+          name="submit"
+          className="submit"
+          value="Save"
+        />
       </form>
       <Modal isOpen={openModal} onClose={onCloseModal}>
         Employee Created!
@@ -302,5 +292,8 @@ const Form = () => {
 };
 
 export default Form;
+
+
+
 
 
