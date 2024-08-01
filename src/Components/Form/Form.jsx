@@ -64,23 +64,42 @@ const Form = () => {
     resetForm(); // Réinitialiser les champs du formulaire lorsque la modal se ferme
   };
 
+  // Fonction de validation des champs
+  const validateForm = () => {
+    return (
+      firstName &&
+      lastName &&
+      birthDate &&
+      startDate &&
+      street &&
+      city &&
+      state &&
+      zipCode &&
+      department
+    );
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const employee = {
-      firstName,
-      lastName,
-      startDate: dateForTable(new Date(startDate)),
-      department,
-      birthDate: dateForTable(new Date(birthDate)),
-      street,
-      city,
-      state,
-      zipCode,
-    };
+    if (validateForm()) {
+      const employee = {
+        firstName,
+        lastName,
+        startDate: dateForTable(new Date(startDate)),
+        department,
+        birthDate: dateForTable(new Date(birthDate)),
+        street,
+        city,
+        state,
+        zipCode,
+      };
 
-    dispatch(addEmployee(employee));
-    setOpenModal(true); // Ouvrir la modal après l'envoi
+      dispatch(addEmployee(employee));
+      setOpenModal(true); // Ouvrir la modal après l'envoi
+    } else {
+      alert("Please fill in all fields."); // Alerte si les champs ne sont pas tous remplis
+    }
   };
 
   const dateForTable = (date) => {
