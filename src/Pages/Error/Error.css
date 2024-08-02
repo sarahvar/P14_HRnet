@@ -1,36 +1,56 @@
-body {
-    background-color: white;
+/* Styles pour la section d'erreur */
+.error-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
     margin: 0;
-    font-family: Arial, sans-serif; /* Ajoutez une police si nécessaire */
   }
-.error {
-    padding-top: 8rem;
+  
+  .error-page-body {
+    background-color: white; /* Fond spécifique pour la page d'erreur */
+    height: 100vh; /* Assurez-vous que le corps prend toute la hauteur */
+    overflow: hidden; /* Désactiver le défilement */
+    margin: 0; /* Assurez-vous qu'il n'y a pas de marge */
   }
-
-.error h1{
-    color: red
-}
-  .error p {
-    font-size: 2.5rem;
+  
+  .error {
+    padding: 2rem;
+  }
+  
+  .error-code {
+    color: red;
+    font-size: 6rem;
+    margin: 0;
+  }
+  
+  .error-message {
+    font-size: 1.5rem;
     font-weight: bolder;
-    margin-left: 3rem;
+    color: red;
     animation: clignote 3s linear infinite;
-    color: red
   }
+  
   @keyframes clignote {
     50% {
       opacity: 0.7;
     }
   }
-  .error-link a {
-    text-decoration: none;
-    color: white;
+  
+  .error-links {
+    margin-top: 2rem;
   }
+  
   .error-link {
-    margin: 4rem auto;
-    width: 15rem;
-    text-align: center;
+    margin: 1rem 0;
     padding: 0.5rem;
     background-color: #444444;
     border-radius: 0.5rem;
   }
+  
+  .error-link a {
+    text-decoration: none;
+    color: white;
+  }
+  
