@@ -67,6 +67,16 @@ export default function MyTable({ labels, data }) {
         return isDesc ? dateA - dateB : dateB - dateA;
       }
 
+      if (label === 'street') {
+        const extractNumber = (str) => {
+          const match = str.match(/(\d+)/); // Cherche le premier nombre complet dans la chaîne
+          return match ? parseInt(match[0], 10) : 0; // Retourne le nombre ou 0 si aucun nombre trouvé
+        };
+        const numA = extractNumber(valueA);
+        const numB = extractNumber(valueB);
+        return isDesc ? numB - numA : numA - numB;
+      }
+
       if (label === 'firstName' || label === 'lastName') {
         const textA = valueA.toLowerCase();
         const textB = valueB.toLowerCase();
@@ -125,5 +135,3 @@ MyTable.propTypes = {
   })).isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
-
-
