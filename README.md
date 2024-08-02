@@ -47,21 +47,8 @@ Cette commande démarre un serveur de développement et vous pouvez accéder à 
 
 Voici un aperçu de la structure du projet :
 
+![image](https://github.com/user-attachments/assets/acb8d1d7-f110-430a-90a0-57a036eddfa6)
 
-
-mon-projet/
-├── public/
-│   └── index.html
-├── src/
-│   ├── Components/
-│   ├── Pages/
-│   ├── Redux/
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-├── package.json
-├── vite.config.js
-└── README.md
 
     public/ : Contient les fichiers publics tels que index.html.
     src/ : Contient le code source de l'application.
