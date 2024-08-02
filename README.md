@@ -41,10 +41,11 @@ bash
 
 npm run dev
 
-Cette commande démarre un serveur de développement et vous pouvez accéder à l'application en ouvrant votre navigateur et en naviguant vers http://localhost:3000.
-Structure du Projet
+Cette commande démarre un serveur de développement et vous pouvez accéder à l'application en ouvrant votre navigateur et en naviguant vers http://localhost:5173.
 
-* Voici un aperçu de la structure du projet :
+* Structure du Projet
+
+Voici un aperçu de la structure du projet :
 
 
 
