@@ -47,16 +47,8 @@ Cette commande démarre un serveur de développement et vous pouvez accéder à 
 
 Voici un aperçu de la structure du projet :
 
-![image](https://github.com/user-attachments/assets/8b70f309-de1c-4722-bae9-fd445311b93c)
+![image](https://github.com/user-attachments/assets/8ae76f4a-00bb-4c36-b240-480a56d7ca9b)
 
-    
-    src/ : Contient le code source de l'application.
-        Components/ : Contient les composants réutilisables de l'application.
-        Pages/ : Contient les pages principales de l'application.
-        Redux/ : Contient les fichiers liés à Redux (actions, reducers, store).
-        App.jsx : Le composant principal de l'application.
-        main.jsx : Le point d'entrée de l'application.
-        index.css : Le fichier CSS principal.
 
 * Technologies Utilisées
 
