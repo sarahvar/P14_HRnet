@@ -47,10 +47,9 @@ Cette commande démarre un serveur de développement et vous pouvez accéder à 
 
 Voici un aperçu de la structure du projet :
 
-![image](https://github.com/user-attachments/assets/acb8d1d7-f110-430a-90a0-57a036eddfa6)
+![image](https://github.com/user-attachments/assets/8b70f309-de1c-4722-bae9-fd445311b93c)
 
-
-    public/ : Contient les fichiers publics tels que index.html.
+    
     src/ : Contient le code source de l'application.
         Components/ : Contient les composants réutilisables de l'application.
         Pages/ : Contient les pages principales de l'application.
