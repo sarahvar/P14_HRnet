@@ -195,92 +195,115 @@ table td:nth-child(4) {
     font-size: 0.5rem;
   }
 }
-/* Styles généraux pour les téléphones portables */
+
 @media (max-width: 600px) {
   table {
-    width: 100%; /* Utiliser la largeur totale de l'écran */
+    width: 100%; 
   }
 
   th, td {
-    padding: 0.5rem; /* Augmenter le padding pour plus de lisibilité */
-    font-size: 0.4rem; /* Réduire légèrement la taille de la police */
+    padding: 0.5rem; 
+    font-size: 0.4rem; 
   }
 
   .table-title {
-    font-size: 1.5rem; /* Réduire la taille du titre pour les petits écrans */
-    width: auto; /* Ajuster la largeur automatiquement */
+    font-size: 1.5rem; 
+    width: auto; 
   }
 
   .table-utils {
-    flex-direction: column; /* Disposer les outils en colonne */
-    align-items: center; /* Centrer les outils */
-    margin-bottom: 1rem; /* Espacement inférieur */
+    flex-direction: column; 
+    align-items: center; 
+    margin-bottom: 1rem; 
   }
 
   .table-utils-1, .table-utils-2 {
-    width: 100%; /* Ajuster la largeur pour les petits écrans */
-    margin: 1rem; /* Enlever les marges latérales */
-    padding: 0.5rem 0; /* Ajuster le padding pour les petits écrans */
+    width: 100%; 
+    margin: 1rem; 
+    padding: 0.5rem 0; 
   }
 
   .table-utils-1 select, .table-utils-2 input {
-    font-size: 1rem; /* Réduire la taille de la police pour plus de lisibilité */
+    font-size: 1rem; 
   }
 
   .pagination {
-    flex-direction: column; /* Disposer les éléments de pagination en colonne */
-    align-items: center; /* Centrer les éléments */
+    flex-direction: column;
+    align-items: center; 
   }
 
   .number {
-    font-size: 0.9rem; /* Réduire la taille de la police pour les boutons de pagination */
-    padding: 0.3rem 0.5rem; /* Ajuster le padding */
+    font-size: 0.9rem; 
+    padding: 0.3rem 0.5rem; 
   }
 
   .table-footer {
-    flex-direction: column; /* Disposer les éléments de pied de page en colonne */
-    align-items: center; /* Centrer les éléments */
+    flex-direction: column; 
+    align-items: center; 
   }
 
   .table-footer-p {
-    margin-left: 0; /* Enlever la marge gauche */
-    margin-bottom: 1rem; /* Ajouter un espacement inférieur */
+    margin-left: 0; 
+    margin-bottom: 1rem; 
   }
 
   .nodata {
-    font-size: 1rem; /* Réduire la taille de la police pour le message "Aucune donnée" */
+    font-size: 1rem;
   }
 }
 
 /* Styles spécifiques pour les très petits téléphones portables */
 @media (max-width: 400px) {
+  table {
+    width: 100%; /* Utiliser toute la largeur de l'écran */
+    font-size: 0.8rem; /* Réduire la taille de la police pour tout le tableau */
+  }
+
   th, td {
-    font-size: 0.7rem; /* Réduire encore la taille de la police */
+    font-size: 0.6rem; /* Réduire la taille de la police */
   }
 
   .table-title {
-    font-size: 1.2rem; /* Réduire la taille du titre */
+    font-size: 1.1rem; /* Réduire la taille du titre pour les très petits écrans */
+    width: 100%; /* Utiliser la largeur complète pour s'adapter à l'écran */
+    padding: 0.3rem; /* Ajuster le padding */
+    box-sizing: border-box; /* Inclure le padding dans la largeur */
+  }
+
+  .table-utils-1, .table-utils-2 {
+    width: 100%; /* Ajuster la largeur pour s'adapter à l'écran */
+    margin: 0; /* Enlever les marges */
+    padding: 0.3rem; /* Réduire le padding pour plus de compacité */
   }
 
   .table-utils-1 select, .table-utils-2 input {
-    font-size: 0.9rem; /* Réduire la taille de la police des champs de saisie */
+    font-size: 0.8rem; /* Réduire la taille de la police des champs de saisie */
+    width: calc(100% - 1rem); /* Ajuster la largeur en fonction du padding */
+    padding: 0.3rem; /* Ajuster le padding pour plus de confort */
+    box-sizing: border-box; /* Inclure le padding dans la largeur */
   }
 
   .number {
-    font-size: 0.8rem; /* Réduire la taille de la police des boutons de pagination */
-    padding: 0.2rem 0.4rem; /* Ajuster le padding */
+    font-size: 0.7rem; /* Réduire la taille de la police des boutons de pagination */
+    padding: 0.2rem; /* Ajuster le padding pour plus de compacité */
   }
 
   .pagination p {
-    font-size: 0.8rem; /* Réduire la taille de la police pour les éléments de pagination */
+    font-size: 0.7rem; /* Réduire la taille de la police pour les éléments de pagination */
   }
 
   .table-header-cell {
     font-size: 0.5rem; /* Réduire la taille de la police des cellules d'en-tête */
+    padding: 0.3rem; /* Ajuster le padding */
   }
 
   td {
-    font-size: 0.6rem; /* Réduire la taille de la police des cellules */
+    font-size: 0.2rem; /* Réduire la taille de la police des cellules */
+  }
+
+  .nodata {
+    font-size: 1rem; /* Ajuster la taille du texte pour les messages d'absence de données */
   }
 }
+
 
