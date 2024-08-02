@@ -24,12 +24,10 @@ Clonez le dépôt sur votre machine locale :
 
 bash
 
-git clone https://github.com/votre-utilisateur/votre-projet.git
-cd mon-projet
+https://github.com/sarahvar/P14_HRnet.git
 
 Installez les dépendances avec npm :
 
-bash
 
 npm install
 
