@@ -1,0 +1,27 @@
+.error {
+    padding-bottom: 8rem;
+  }
+  .error p {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    margin-left: 3rem;
+    animation: clignote 3s linear infinite;
+    color: #444444;
+  }
+  @keyframes clignote {
+    50% {
+      opacity: 0.7;
+    }
+  }
+  .error-link a {
+    text-decoration: none;
+    color: white;
+  }
+  .error-link {
+    margin: 4rem auto;
+    width: 15rem;
+    text-align: center;
+    padding: 0.5rem;
+    background-color: #444444;
+    border-radius: 0.5rem;
+  }
