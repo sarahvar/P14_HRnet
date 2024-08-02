@@ -1,6 +1,20 @@
 .employees {
   height: 80vh;
 }
+/* Employees.css */
+
+h1.page-title {
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: #e0e0e0;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 8px;
+  margin: 0 auto 1rem auto; /* Centrage horizontal */
+  max-width: 80%; /* Ajustez cette valeur pour réduire la largeur du titre */
+  width: fit-content; /* Ajuste la largeur en fonction du contenu */
+}
 
 .employees-link a {
   text-decoration: none;
@@ -8,7 +22,7 @@
 }
 
 .employees-link {
-  margin: 5rem auto 12rem;
+  margin: 1rem auto 12rem;
   width: 5rem;
   text-align: center;
   padding: 0.5rem;
@@ -29,7 +43,7 @@
 }
 
 .table {
-  margin-top: 7rem;
+  margin-top: 4rem;
 }
 
 @media (max-width: 1300px) {

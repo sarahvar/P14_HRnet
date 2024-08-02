@@ -11,12 +11,14 @@ export default function Employees() {
 
   return (
     <div className="employees">
+      <h1 className="page-title">Current Employees</h1> {/* Titre de la page */}
+
       <div className="table">
         <MyTable labels={labels} data={employees} />
       </div>
 
       <div className="employees-link">
-        <Link to="/"> &#x21A9; Home</Link>
+        <Link to="/" className="home-link"> &#x21A9; Home</Link>
       </div>
     </div>
   );

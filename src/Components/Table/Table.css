@@ -77,7 +77,7 @@ table td:nth-child(4) {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: -6rem;
+  margin-bottom: -2rem;
 }
 .table-utils-2 {
   display: flex;
