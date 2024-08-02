@@ -1,4 +1,4 @@
-Ce projet consiste à convertir une application existante construite en jQuery en utilisant React. Nous avons également utilisé Vite pour la configuration du projet, npm pour la gestion des dépendances, et Redux pour la gestion de l'état global de l'application.
+Ce projet consiste à convertir une application existante construite en jQuery en utilisant React. J'ai également utilisé Vite pour la configuration du projet, npm pour la gestion des dépendances, et Redux pour la gestion de l'état global de l'application.
 Table des Matières
 
     Introduction
@@ -9,7 +9,7 @@ Table des Matières
     Technologies Utilisées
     Notes de Conversion   
 
-Introduction
+*Introduction
 
 Ce projet vise à moderniser une application en passant de jQuery à React. Le but est d'améliorer la maintenabilité, la performance, et de tirer parti de l'écosystème riche de React.
 Prérequis
@@ -19,7 +19,7 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine :
     Node.js (version 14 ou supérieure)
     npm (version 6 ou supérieure)
 
-Installation
+*Installation
 
 Clonez le dépôt sur votre machine locale :
 
@@ -34,7 +34,7 @@ bash
 
 npm install
 
-Démarrage du Projet
+*Démarrage du Projet
 
 Pour démarrer le projet en mode développement, utilisez la commande suivante :
 
@@ -72,7 +72,7 @@ votre-projet/
         main.jsx : Le point d'entrée de l'application.
         index.css : Le fichier CSS principal.
 
-Technologies Utilisées
+*Technologies Utilisées
 
     React : Une bibliothèque JavaScript pour construire des interfaces utilisateur.
     Vite : Un outil de build rapide pour les applications web modernes.
@@ -80,7 +80,7 @@ Technologies Utilisées
     Redux : Une bibliothèque pour la gestion de l'état global de l'application.
     React Router : Une bibliothèque pour gérer la navigation dans une application React.
 
-Notes de Conversion
+*Notes de Conversion
 
     Composants Fonctionnels : Tous les composants ont été convertis en composants fonctionnels avec des hooks.
     State Management : La gestion de l'état global a été migrée vers Redux.
