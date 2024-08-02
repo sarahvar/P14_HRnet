@@ -1,14 +1,36 @@
 [
     {
+        "firstName": "Maxine",
+        "lastName": "Caulfield",
+        "startDate": "03/15/2021",
+        "department": "Marketing",
+        "birthDate": "09/21/1995",
+        "street": "303 Elm St",
+        "city": "Atlanta",
+        "state": "GA",
+        "zipCode": "30301"
+    },
+    {
+        "firstName": "Chloe",
+        "lastName": "Price",
+        "startDate": "05/10/2023",
+        "department": "Sales",
+        "birthDate": "03/11/1994",
+        "street": "404 Cedar St",
+        "city": "Atlanta",
+        "state": "GA",
+        "zipCode": "30302"
+    },
+    {
         "firstName": "John",
         "lastName": "Doe",
         "startDate": "05/01/2010",
         "department": "Marketing",
         "birthDate": "04/12/1985",
         "street": "123 Main St",
-        "city": "Springfield",
-        "state": "IL",
-        "zipCode": "62701"
+        "city": "New York",
+        "state": "NY",
+        "zipCode": "10001"
     },
     {
         "firstName": "Jane",
@@ -17,9 +39,9 @@
         "department": "Sales",
         "birthDate": "08/22/1979",
         "street": "456 Oak St",
-        "city": "Madison",
-        "state": "WI",
-        "zipCode": "53703"
+        "city": "San Francisco",
+        "state": "CA",
+        "zipCode": "94102"
     },
     {
         "firstName": "Alice",
@@ -28,9 +50,9 @@
         "department": "Human Resources",
         "birthDate": "03/05/1992",
         "street": "789 Pine St",
-        "city": "Austin",
-        "state": "TX",
-        "zipCode": "73301"
+        "city": "Chicago",
+        "state": "IL",
+        "zipCode": "60601"
     },
     {
         "firstName": "Bob",
@@ -53,5 +75,94 @@
         "city": "Denver",
         "state": "CO",
         "zipCode": "80202"
+    },
+    {
+        "firstName": "David",
+        "lastName": "Clark",
+        "startDate": "11/22/2019",
+        "department": "Human Resources",
+        "birthDate": "01/15/1980",
+        "street": "303 Maple St",
+        "city": "Austin",
+        "state": "TX",
+        "zipCode": "73301"
+    },
+    {
+        "firstName": "Emily",
+        "lastName": "Wilson",
+        "startDate": "02/10/2016",
+        "department": "Legal",
+        "birthDate": "07/30/1990",
+        "street": "404 Elm St",
+        "city": "Miami",
+        "state": "FL",
+        "zipCode": "33101"
+    },
+    {
+        "firstName": "Frank",
+        "lastName": "Martinez",
+        "startDate": "08/17/2022",
+        "department": "Engineering",
+        "birthDate": "05/25/1985",
+        "street": "505 Oak St",
+        "city": "Orlando",
+        "state": "FL",
+        "zipCode": "32801"
+    },
+    {
+        "firstName": "Grace",
+        "lastName": "Lee",
+        "startDate": "12/04/2014",
+        "department": "Marketing",
+        "birthDate": "10/05/1982",
+        "street": "606 Pine St",
+        "city": "Philadelphia",
+        "state": "PA",
+        "zipCode": "19101"
+    },
+    {
+        "firstName": "Henry",
+        "lastName": "Taylor",
+        "startDate": "06/01/2020",
+        "department": "Sales",
+        "birthDate": "09/12/1978",
+        "street": "707 Maple St",
+        "city": "Boston",
+        "state": "MA",
+        "zipCode": "02101"
+    },
+    {
+        "firstName": "Ivy",
+        "lastName": "Anderson",
+        "startDate": "07/18/2017",
+        "department": "Human Resources",
+        "birthDate": "11/23/1987",
+        "street": "808 Cedar St",
+        "city": "San Diego",
+        "state": "CA",
+        "zipCode": "92101"
+    },
+    {
+        "firstName": "Jack",
+        "lastName": "Harris",
+        "startDate": "04/20/2021",
+        "department": "Legal",
+        "birthDate": "06/14/1990",
+        "street": "909 Birch St",
+        "city": "Seattle",
+        "state": "WA",
+        "zipCode": "98102"
+    },
+    {
+        "firstName": "Katherine",
+        "lastName": "Walker",
+        "startDate": "09/29/2018",
+        "department": "Engineering",
+        "birthDate": "02/10/1986",
+        "street": "1010 Elm St",
+        "city": "Phoenix",
+        "state": "AZ",
+        "zipCode": "85001"
     }
 ]
+
