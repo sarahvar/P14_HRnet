@@ -1,12 +1,21 @@
-.error {
-    padding-bottom: 8rem;
+body {
+    background-color: white;
+    margin: 0;
+    font-family: Arial, sans-serif; /* Ajoutez une police si nécessaire */
   }
+.error {
+    padding-top: 8rem;
+  }
+
+.error h1{
+    color: red
+}
   .error p {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: bolder;
     margin-left: 3rem;
     animation: clignote 3s linear infinite;
-    color: #444444;
+    color: red
   }
   @keyframes clignote {
     50% {
