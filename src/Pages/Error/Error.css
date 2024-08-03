@@ -3,13 +3,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     text-align: center;
     margin: 0;
   }
   
   .error-page-body {
-    height: 100vh; /* Assurez-vous que le corps prend toute la hauteur */
     overflow: hidden; /* Désactiver le défilement */
     margin: 0; /* Assurez-vous qu'il n'y a pas de marge */
   }
@@ -24,16 +22,11 @@
     padding: 2rem;
   }
   
-  .error-code {
-    color: red;
-    font-size: 6rem;
-    margin: 0;
-  }
   
   .error-message {
     font-size: 1.5rem;
     font-weight: bolder;
-    color: red;
+    color: green;
     animation: clignote 3s linear infinite;
   }
   
