@@ -120,7 +120,7 @@ form {
 }
 
 .input-group input[type="submit"] {
-  background-color: #4CAF50;
+  background-color: green;
   color: white;
   border: none;
   cursor: pointer;
