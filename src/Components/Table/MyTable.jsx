@@ -21,7 +21,8 @@ export default function MyTable({ labels, data }) {
   const [sort, setSort] = useState({ column: labels[0].value || "", isDesc: false });
 
   useEffect(() => {
-    const sorted = sorting(sort.column, sort.isDesc);
+    const formattedData = formatData(data);
+    const sorted = sorting(formattedData, sort.column, sort.isDesc);
     setSortedData(sorted);
   }, [sort, data]);
 
@@ -39,13 +40,31 @@ export default function MyTable({ labels, data }) {
         column: label,
         isDesc: prevSort.column === label ? !prevSort.isDesc : false // Premier clic ascendant
       };
-      const sorted = sorting(newSort.column, newSort.isDesc);
+      const sorted = sorting(sortedData, newSort.column, newSort.isDesc);
       setSortedData(sorted);
       return newSort;
     });
   };
 
-  const sorting = (label, isDesc) => {
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+  };
+
+  const formatData = (data) => {
+    return data.map(item => {
+      return {
+        ...item,
+        birthDate: formatDate(item.birthDate),
+        startDate: formatDate(item.startDate),
+      };
+    });
+  };
+
+  const sorting = (data, label, isDesc) => {
     const sorted = [...data].sort((a, b) => {
       let valueA = a[label] !== undefined && a[label] !== null ? a[label] : "";
       let valueB = b[label] !== undefined && b[label] !== null ? b[label] : "";
@@ -88,12 +107,14 @@ export default function MyTable({ labels, data }) {
     return sorted;
   };
 
+  const formattedData = formatData(data);
+
   return (
     <div className="MyTable">
       <div className="table-utils">
         <Entries value={postPerPage} handleChange={handleEntriesChange} />
         <Search
-          data={data}
+          data={formattedData}
           handleDisplayedData={setSortedData}
           handleIsSearching={setIsSearching}
         />
@@ -134,3 +155,4 @@ MyTable.propTypes = {
   })).isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+
