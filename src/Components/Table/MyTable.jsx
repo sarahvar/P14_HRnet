@@ -63,8 +63,7 @@ export default function MyTable({ labels, data }) {
       if (label === 'birthDate' || label === 'startDate') {
         const dateA = new Date(valueA).getTime();
         const dateB = new Date(valueB).getTime();
-        // Inverser la logique de tri par date pour que l'ordre soit inversé par défaut
-        return isDesc ? dateA - dateB : dateB - dateA;
+        return isDesc ? dateB - dateA : dateA - dateB;
       }
 
       if (label === 'street') {
