@@ -22,8 +22,8 @@ const MainLayout = ({ children }) => {
 const App = () => (
   <Suspense fallback={<div>Loading...</div>}>
     <Routes>
-      <Route path="/" element={<MainLayout><Home /></MainLayout>} />
-      <Route path="/employees" element={<MainLayout><Employees /></MainLayout>} />
+      <Route path="/" element={<Home />}/>
+      <Route path="/employees" element={<Employees />} />
       <Route path="*" element={<Error />} />
     </Routes>
   </Suspense>

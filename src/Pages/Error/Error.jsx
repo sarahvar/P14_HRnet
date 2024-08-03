@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Error.css";
+import ErrorImage from "../../assets/Erreur-404.png" // Assurez-vous que le chemin d'accès est correct
 
 export default function NotFound() {
   useEffect(() => {
@@ -16,7 +17,7 @@ export default function NotFound() {
         <div className="error-link">
           <Link to="/"> &#x21A9; Home &#x1F3E1; &#x1F3E1;</Link>
         </div>
-        <h1 className="error-code">404</h1>
+        <img src={ErrorImage} alt="Error 404" className="error-image" />
         <p className="error-message">Error, this page doesn't exist!</p>
         <div className="error-link">
           <Link to="/employees">
@@ -27,6 +28,7 @@ export default function NotFound() {
     </div>
   );
 }
+
 
 
 
