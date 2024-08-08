@@ -9,6 +9,7 @@ Table des Matières
     Structure du Projet
     Technologies Utilisées
     Notes de Conversion   
+    Compétences acquises 
 
 * Introduction
 
@@ -64,3 +65,11 @@ Voici un aperçu de la structure du projet :
     State Management : La gestion de l'état global a été migrée vers Redux.
     Routing : La navigation a été mise à jour pour utiliser React Router.
     Vite : Le projet utilise Vite pour des temps de build plus rapides et une expérience de développement améliorée.
+
+* Compétences acquises
+  
+   Analyser la performance d'une application web
+   Déployer une application front-end
+   Programmer en JavaScript avec la programmation fonctionnelle
+   Refondre une application pour réduire la dette technique
+  
